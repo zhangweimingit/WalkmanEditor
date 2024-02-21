@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:hc="https://handyorg.github.io/handycontrol"
-        xmlns:local="clr-namespace:DictionaryEditor"
+        xmlns:local="clr-namespace:DictionaryEditor" 
+        xmlns:views="clr-namespace:DictionaryEditor.Views"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
@@ -17,19 +18,6 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <hc:SideMenu Grid.Column="0" 
-                     Margin="1">
-            <hc:SideMenuItem Header="每日英语">
-                <hc:SideMenuItem.Icon>
-                    <Image Source="{StaticResource Icon_daily_english}" Width="30" Height="30"/>
-                </hc:SideMenuItem.Icon>
-            </hc:SideMenuItem>
-
-            <hc:SideMenuItem Header="我的词典">
-                <hc:SideMenuItem.Icon>
-                    <Image Source="{StaticResource Icon_my_dictionary}"  Width="30" Height="30"/>
-                </hc:SideMenuItem.Icon>
-            </hc:SideMenuItem>
-        </hc:SideMenu>
+        <views:SideMenuNavigator Grid.Column="0" />
     </Grid>
 </hc:GlowWindow>
