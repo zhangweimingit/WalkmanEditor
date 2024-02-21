@@ -11,8 +11,23 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+
+        <hc:SideMenu Grid.Column="0" 
+                     Margin="1">
+            <hc:SideMenuItem Header="每日英语">
+                <hc:SideMenuItem.Icon>
+                    <Image Source="{StaticResource Icon_daily_english}" Width="30" Height="30"/>
+                </hc:SideMenuItem.Icon>
+            </hc:SideMenuItem>
+
+            <hc:SideMenuItem Header="我的词典">
+                <hc:SideMenuItem.Icon>
+                    <Image Source="{StaticResource Icon_my_dictionary}"  Width="30" Height="30"/>
+                </hc:SideMenuItem.Icon>
+            </hc:SideMenuItem>
+        </hc:SideMenu>
     </Grid>
 </hc:GlowWindow>

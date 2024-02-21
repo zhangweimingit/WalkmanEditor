@@ -9,7 +9,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Image\Letter-A-Icon-128.png" />
+    <None Remove="Resources\Image\Letter-B-Icon-128.png" />
+    <None Remove="Resources\Image\Letter-C-Icon-128.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="HandyControls" Version="3.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Image\Letter-A-Icon-128.png" />
+    <Resource Include="Resources\Image\Letter-B-Icon-128.png" />
+    <Resource Include="Resources\Image\Letter-C-Icon-128.png" />
   </ItemGroup>
 
 </Project>

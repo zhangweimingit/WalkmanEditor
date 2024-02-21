@@ -7,9 +7,12 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <hc:ThemeResources RequestedTheme="Dark"/>
+                <hc:ThemeResources RequestedTheme="Dark" AccentColor="Orange"/>
                 <hc:Theme/>
             </ResourceDictionary.MergedDictionaries>
+
+            <BitmapImage x:Key="Icon_daily_english" UriSource="Resources/Image/Letter-A-Icon-128.png"/>
+            <BitmapImage x:Key="Icon_my_dictionary" UriSource="Resources/Image/Letter-B-Icon-128.png"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
