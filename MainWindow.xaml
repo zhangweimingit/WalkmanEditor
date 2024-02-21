@@ -8,7 +8,9 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
-        Title="MainWindow" Height="450" Width="800">
+        Title="我的随身听后台编辑器"
+        Icon="{StaticResource Icon_application}"
+        Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
