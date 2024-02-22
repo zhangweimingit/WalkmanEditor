@@ -18,6 +18,7 @@
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
     <PackageReference Include="HandyControls" Version="3.5.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,10 +26,6 @@
     <Resource Include="Resources\Image\Letter-A-Icon-128.png" />
     <Resource Include="Resources\Image\Letter-B-Icon-128.png" />
     <Resource Include="Resources\Image\Letter-C-Icon-128.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
   </ItemGroup>
 
 </Project>

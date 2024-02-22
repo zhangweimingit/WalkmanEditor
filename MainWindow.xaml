@@ -10,7 +10,7 @@
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
         Title="我的随身听后台编辑器"
-        Icon="{StaticResource Icon_application}"
+        Icon="{StaticResource Icon.Application.Logo}"
         Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
