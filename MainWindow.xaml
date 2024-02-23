@@ -19,5 +19,16 @@
         </Grid.ColumnDefinitions>
 
         <views:SideMenuNavigator Grid.Column="0" />
+
+        <!-- Growl panels-->
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right">
+            <StackPanel hc:Growl.GrowlParent="True" VerticalAlignment="Top" Margin="0,10,10,10"/>
+        </ScrollViewer>
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <StackPanel hc:Growl.Token="InfoMessage" VerticalAlignment="Top" Margin="0,10,10,10"/>
+        </ScrollViewer>
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <StackPanel hc:Growl.Token="ErrorMessage" VerticalAlignment="Top" Margin="0,10,10,10"/>
+        </ScrollViewer>
     </Grid>
 </hc:GlowWindow>
