@@ -15,7 +15,7 @@
 
             <!--ViewModel resource-->
             <viewmodels:ViewModelLocator x:Key="Locator"/>
-            
+
             <!--Icons-->
             <BitmapImage x:Key="Icon.Application.Logo" UriSource="Resources/Image/Applicaton-Icon-128.png"/>
             <BitmapImage x:Key="Icon.Navigator.Daily.english" UriSource="Resources/Image/Letter-A-Icon-128.png"/>
