@@ -9,6 +9,10 @@
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
+  <PropertyGroup>
+		<NoWarn>$(NoWarn);NETSDK1206</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="Resources\Image\Applicaton-Icon-128.png" />
     <None Remove="Resources\Image\Letter-A-Icon-128.png" />

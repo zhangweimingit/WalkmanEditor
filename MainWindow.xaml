@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:hc="https://handyorg.github.io/handycontrol"
         xmlns:local="clr-namespace:DictionaryEditor" 
+        xmlns:views="clr-namespace:DictionaryEditor.Views"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
@@ -47,6 +48,12 @@
             </hc:SideMenu>
         </hc:TransitioningContentControl>
 
+        <!--Main content-->
+        <Grid Grid.Column="1">
+            <views:DailyEnglishPage Visibility="{Binding IsDailyEnglishItemVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            <views:MyDictionaryPage Visibility="{Binding IsMyDictionaryItemVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+        </Grid>
+        
         <!-- Growl panels-->
         <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right">
             <StackPanel hc:Growl.GrowlParent="True" VerticalAlignment="Top" Margin="0,10,10,10"/>

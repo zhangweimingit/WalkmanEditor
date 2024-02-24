@@ -4,7 +4,8 @@
              xmlns:hc="https://handyorg.github.io/handycontrol"
              xmlns:local="clr-namespace:DictionaryEditor" 
              xmlns:viewmodels="clr-namespace:DictionaryEditor.ViewModels"
-             StartupUri="Views/MainWindow.xaml">
+             xmlns:converters="clr-namespace:DictionaryEditor.Converters"
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <!--HandyControl reference-->
@@ -20,6 +21,10 @@
             <BitmapImage x:Key="Icon.Application.Logo" UriSource="Resources/Image/Applicaton-Icon-128.png"/>
             <BitmapImage x:Key="Icon.Navigator.Daily.english" UriSource="Resources/Image/Letter-A-Icon-128.png"/>
             <BitmapImage x:Key="Icon.Navigator.My.Dictionary" UriSource="Resources/Image/Letter-B-Icon-128.png"/>
+
+            <!--Converters-->
+            <converters:BooleanToVisibilityConverter  x:Key="BooleanToVisibilityConverter" />
+            <converters:BooleanToVisibilityConverter  x:Key="BooleanToVisibilityReConverter" VisibilityOfTrue="Hidden" VisibilityOfFalse="Visible"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
