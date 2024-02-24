@@ -18,7 +18,10 @@ namespace DictionaryEditor.ViewModels
             Ioc.Default.ConfigureServices(
                 new ServiceCollection()
                 .AddSingleton<IMessenger>(new WeakReferenceMessenger())
+                .AddSingleton<MainWindowViewModel>()
                 .BuildServiceProvider());
         }
+
+        public MainWindowViewModel MainWindowViewModel => Ioc.Default.GetService<MainWindowViewModel>();
     }
 }

@@ -10,7 +10,8 @@
         WindowState="Maximized"
         Title="我的随身听后台编辑器"
         Icon="{StaticResource Icon.Application.Logo}"
-        Height="450" Width="800">
+        Height="450" Width="800"
+        DataContext="{Binding Source={StaticResource Locator}, Path=MainWindowViewModel}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
@@ -22,20 +23,22 @@
             <hc:SideMenu Margin="1">
                     
                 <!-- English Channel-->
-                <hc:SideMenuItem Header="编辑">
+                <hc:SideMenuItem Header="编辑区">
                     <hc:SideMenuItem.Icon>
                         <Image Source="{StaticResource Icon.Application.Logo}" Width="30" Height="30"/>
                     </hc:SideMenuItem.Icon>
 
                     <!--Daily English-->
-                    <hc:SideMenuItem Header="每日英语">
+                    <hc:SideMenuItem Header="每日英语" 
+                                     Command="{Binding SelectSideMuneItemCmd}" CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
                         <hc:SideMenuItem.Icon>
                             <Image Source="{StaticResource Icon.Navigator.Daily.english}" Width="16" Height="16"/>
                         </hc:SideMenuItem.Icon>
                     </hc:SideMenuItem>
 
                     <!--My Dictionary-->
-                    <hc:SideMenuItem Header="我的词典">
+                    <hc:SideMenuItem Header="我的词典" 
+                                     Command="{Binding SelectSideMuneItemCmd}" CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
                         <hc:SideMenuItem.Icon>
                             <Image Source="{StaticResource Icon.Navigator.My.Dictionary}"  Width="16" Height="16"/>
                         </hc:SideMenuItem.Icon>

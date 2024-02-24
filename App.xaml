@@ -4,7 +4,7 @@
              xmlns:hc="https://handyorg.github.io/handycontrol"
              xmlns:local="clr-namespace:DictionaryEditor" 
              xmlns:viewmodels="clr-namespace:DictionaryEditor.ViewModels"
-             StartupUri="MainWindow.xaml">
+             StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <!--HandyControl reference-->
