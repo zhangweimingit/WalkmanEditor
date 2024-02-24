@@ -20,24 +20,26 @@
         <!--Side menu navigator-->
         <hc:TransitioningContentControl Grid.Column="0">
             <hc:SideMenu Margin="1">
-                
-                <!--Set the color of side menu item-->
-                <hc:SideMenu.Resources>
-                    <SolidColorBrush x:Key="BorderBrush" Color="DarkGreen"/>
-                </hc:SideMenu.Resources>
-
-                <!--Daily English-->
-                <hc:SideMenuItem Header="每日英语">
+                    
+                <!-- English Channel-->
+                <hc:SideMenuItem Header="编辑">
                     <hc:SideMenuItem.Icon>
-                        <Image Source="{StaticResource Icon.Navigator.Daily.english}" Width="30" Height="30"/>
+                        <Image Source="{StaticResource Icon.Application.Logo}" Width="30" Height="30"/>
                     </hc:SideMenuItem.Icon>
-                </hc:SideMenuItem>
 
-                <!--My Dictionary-->
-                <hc:SideMenuItem Header="我的词典">
-                    <hc:SideMenuItem.Icon>
-                        <Image Source="{StaticResource Icon.Navigator.My.Dictionary}"  Width="30" Height="30"/>
-                    </hc:SideMenuItem.Icon>
+                    <!--Daily English-->
+                    <hc:SideMenuItem Header="每日英语">
+                        <hc:SideMenuItem.Icon>
+                            <Image Source="{StaticResource Icon.Navigator.Daily.english}" Width="16" Height="16"/>
+                        </hc:SideMenuItem.Icon>
+                    </hc:SideMenuItem>
+
+                    <!--My Dictionary-->
+                    <hc:SideMenuItem Header="我的词典">
+                        <hc:SideMenuItem.Icon>
+                            <Image Source="{StaticResource Icon.Navigator.My.Dictionary}"  Width="16" Height="16"/>
+                        </hc:SideMenuItem.Icon>
+                    </hc:SideMenuItem>
                 </hc:SideMenuItem>
             </hc:SideMenu>
         </hc:TransitioningContentControl>
