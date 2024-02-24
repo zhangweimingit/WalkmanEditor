@@ -28,4 +28,8 @@
     <Resource Include="Resources\Image\Letter-C-Icon-128.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\" />
+  </ItemGroup>
+
 </Project>
