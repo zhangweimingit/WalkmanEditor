@@ -24,11 +24,12 @@ namespace DictionaryEditor.ViewModels
                 {
 
                     SelectedSideMenuItemHeader = header;
-                    Growl.Info($"您已进入 <<{header}>> 编辑区");
+                    Growl.Info($"您已进入 <<{header}>> 窗口");
                 });
             }  
         }
             
+
 
 
         /// <summary>

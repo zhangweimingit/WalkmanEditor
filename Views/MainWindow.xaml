@@ -23,7 +23,7 @@
             <hc:SideMenu Margin="1">
                     
                 <!-- English Channel-->
-                <hc:SideMenuItem Header="编辑区">
+                <hc:SideMenuItem Header="词条编辑">
                     <hc:SideMenuItem.Icon>
                         <Image Source="{StaticResource Icon.Application.Logo}" Width="30" Height="30"/>
                     </hc:SideMenuItem.Icon>
