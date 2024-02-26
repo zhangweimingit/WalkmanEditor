@@ -14,17 +14,19 @@
                 <hc:Theme/>
             </ResourceDictionary.MergedDictionaries>
 
-            <!--ViewModel resource-->
-            <viewmodels:ViewModelLocator x:Key="Locator"/>
-
             <!--Icons-->
             <BitmapImage x:Key="Icon.Application.Logo" UriSource="Resources/Image/Applicaton-Icon-128.png"/>
             <BitmapImage x:Key="Icon.Navigator.Daily.english" UriSource="Resources/Image/Letter-A-Icon-128.png"/>
             <BitmapImage x:Key="Icon.Navigator.My.Dictionary" UriSource="Resources/Image/Letter-B-Icon-128.png"/>
+            <BitmapImage x:Key="Icon.Navigator.Settings" UriSource="Resources/Image/Settings-icon-128.png"/>
+            <BitmapImage x:Key="Icon.Navigator.Settings.Azure" UriSource="Resources/Image/Settings-Azure-TTS-Icon-128.png"/>
 
             <!--Converters-->
             <converters:BooleanToVisibilityConverter  x:Key="BooleanToVisibilityConverter" />
             <converters:BooleanToVisibilityConverter  x:Key="BooleanToVisibilityReConverter" VisibilityOfTrue="Hidden" VisibilityOfFalse="Visible"/>
+
+            <!--ViewModel resource-->
+            <viewmodels:ViewModelLocator x:Key="Locator"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

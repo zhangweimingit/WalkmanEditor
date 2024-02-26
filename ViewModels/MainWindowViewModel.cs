@@ -54,10 +54,22 @@ namespace DictionaryEditor.ViewModels
             }
         }
 
+
+        /// <summary>
+        /// Used to control the visibility of My Dictionary module
+        /// </summary>
+        public bool IsAzureTTSSettingItemVisible
+        {
+            get
+            {
+                return SelectedSideMenuItemHeader == "TTS密钥设置";
+            }
+        }
+
         /// <summary>
         /// The header of selected side menu item
         /// </summary>
-        public string? SelectedSideMenuItemHeader
+        public string SelectedSideMenuItemHeader
         {
             get => m_selectedSideMenuItemHeader;
             set 
@@ -66,10 +78,11 @@ namespace DictionaryEditor.ViewModels
                 OnPropertyChanged(nameof(SelectedSideMenuItemHeader));
                 OnPropertyChanged(nameof(IsDailyEnglishItemVisible));
                 OnPropertyChanged(nameof(IsMyDictionaryItemVisible));
+                OnPropertyChanged(nameof(IsAzureTTSSettingItemVisible));
             }
         }
 
-        private ICommand? m_selectSideMuneItemCmd;
-        private string?   m_selectedSideMenuItemHeader = null;
+        private ICommand m_selectSideMuneItemCmd;
+        private string   m_selectedSideMenuItemHeader = null;
     }
 }

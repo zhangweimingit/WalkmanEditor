@@ -12,7 +12,7 @@
         Title="我的随身听后台编辑器"
         Icon="{StaticResource Icon.Application.Logo}"
         Height="450" Width="800"
-        DataContext="{Binding Source={StaticResource Locator}, Path=MainWindowViewModel}">
+        DataContext="{Binding Source={hc:StaticResource Locator}, Path=MainWindowViewModel}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
@@ -45,13 +45,29 @@
                         </hc:SideMenuItem.Icon>
                     </hc:SideMenuItem>
                 </hc:SideMenuItem>
+
+                <!--Settings-->
+                <hc:SideMenuItem Header="设置">
+                    <hc:SideMenuItem.Icon>
+                        <Image Source="{StaticResource Icon.Navigator.Settings}" Width="30" Height="30"/>
+                    </hc:SideMenuItem.Icon>
+
+                    <!--Azure TTS Settings-->
+                    <hc:SideMenuItem Header="TTS密钥设置" 
+                                     Command="{Binding SelectSideMuneItemCmd}" CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
+                        <hc:SideMenuItem.Icon>
+                            <Image Source="{StaticResource Icon.Navigator.Settings.Azure}" Width="16" Height="16"/>
+                        </hc:SideMenuItem.Icon>
+                    </hc:SideMenuItem>
+                </hc:SideMenuItem>
             </hc:SideMenu>
         </hc:TransitioningContentControl>
 
         <!--Main content-->
         <Grid Grid.Column="1">
-            <views:DailyEnglishPage Visibility="{Binding IsDailyEnglishItemVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-            <views:MyDictionaryPage Visibility="{Binding IsMyDictionaryItemVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            <views:DailyEnglishPage Visibility="{Binding  Path=DataContext.IsDailyEnglishItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            <views:MyDictionaryPage Visibility="{Binding  Path=DataContext.IsMyDictionaryItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            <views:AzureTTSSettingPage Visibility="{Binding Path=DataContext.IsAzureTTSSettingItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
         </Grid>
         
         <!-- Growl panels-->

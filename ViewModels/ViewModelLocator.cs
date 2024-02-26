@@ -18,10 +18,13 @@ namespace DictionaryEditor.ViewModels
             Ioc.Default.ConfigureServices(
                 new ServiceCollection()
                 .AddSingleton<IMessenger>(new WeakReferenceMessenger())
+                .AddSingleton<AzureTTSSettingPageViewModel>()
                 .AddSingleton<MainWindowViewModel>()
                 .BuildServiceProvider());
         }
 
-        public MainWindowViewModel MainWindowViewModel => Ioc.Default.GetService<MainWindowViewModel>();
+        public static MainWindowViewModel MainWindowViewModel => Ioc.Default.GetService<MainWindowViewModel>();
+
+        public static AzureTTSSettingPageViewModel AzureTTSSettingPageViewModel => Ioc.Default.GetService<AzureTTSSettingPageViewModel>();
     }
 }
