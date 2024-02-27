@@ -24,7 +24,6 @@ namespace DictionaryEditor.ViewModels
                 {
 
                     SelectedSideMenuItemHeader = header;
-                    Growl.Info($"您已进入 <<{header}>> 窗口");
                 });
             }  
         }

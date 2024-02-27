@@ -3,10 +3,56 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:DictionaryEditor.Views"
+             xmlns:local="clr-namespace:DictionaryEditor.Views" 
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             xmlns:wpf="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBlock>This is daily english</TextBlock>
+             d:DesignHeight="800" d:DesignWidth="1620"
+             DataContext="{Binding Source={StaticResource Locator}, Path=DailyEnglishPageViewModel}">
+    <Grid Margin="10" Name="DailyEnglishPanelMain">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <hc:StepBar Grid.ColumnSpan="2"
+                    ItemsSource="{Binding StepBarDataList}">
+            <hc:StepBar.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left"/>
+                        <TextBlock Margin="0,4,0,0" Text="{Binding Remark}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </hc:StepBar.ItemTemplate>
+        </hc:StepBar>
+
+        <StackPanel Margin="10" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+            <Button CommandParameter="{Binding ElementName=DailyEnglishPanelMain}" Command="{Binding PrevStepCmd}" Width="180" Content="上一步" Style="{StaticResource ButtonPrimary}"/>
+            <Button CommandParameter="{Binding ElementName=DailyEnglishPanelMain}" Command="{Binding NextStepCmd}" Width="180" Margin="0,16,0,0" Content="下一步" Style="{StaticResource ButtonPrimary}"/>
+        </StackPanel>
+
+        <hc:TransitioningContentControl Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+            <TabControl Style="{StaticResource TabControlInLine}">
+                <TabItem Header="输入英文文本">
+                    <hc:TextBox Width="1000" Height="500" Padding="20"
+                                TextWrapping="Wrap" AcceptsReturn="True"
+                                FontSize="16" Foreground="{StaticResource SecondaryTextBrush}"
+                                VerticalContentAlignment="Top"/>
+                </TabItem>
+                <TabItem Header="生成中文翻译">
+                    
+                </TabItem>
+                <TabItem Header="Small">
+                   
+                </TabItem>
+            </TabControl>
+        </hc:TransitioningContentControl>
     </Grid>
 </UserControl>

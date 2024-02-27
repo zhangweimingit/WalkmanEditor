@@ -12,6 +12,7 @@
         Title="我的随身听后台编辑器"
         Icon="{StaticResource Icon.Application.Logo}"
         Height="450" Width="800"
+        Background="{DynamicResource RegionBrush}"
         DataContext="{Binding Source={hc:StaticResource Locator}, Path=MainWindowViewModel}">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -64,12 +65,14 @@
         </hc:TransitioningContentControl>
 
         <!--Main content-->
-        <Grid Grid.Column="1">
-            <views:DailyEnglishPage Visibility="{Binding  Path=DataContext.IsDailyEnglishItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-            <views:MyDictionaryPage Visibility="{Binding  Path=DataContext.IsMyDictionaryItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-            <views:AzureTTSSettingPage Visibility="{Binding Path=DataContext.IsAzureTTSSettingItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-        </Grid>
-        
+        <Border Grid.Column="1" Background="{DynamicResource MainContentForegroundDrawingBrush}">
+            <Grid Margin="16">
+                <views:DailyEnglishPage Visibility="{Binding  Path=DataContext.IsDailyEnglishItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                <views:MyDictionaryPage Visibility="{Binding  Path=DataContext.IsMyDictionaryItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                <views:AzureTTSSettingPage Visibility="{Binding Path=DataContext.IsAzureTTSSettingItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            </Grid>
+        </Border>
+   
         <!-- Growl panels-->
         <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right">
             <StackPanel hc:Growl.GrowlParent="True" VerticalAlignment="Top" Margin="0,10,10,10"/>

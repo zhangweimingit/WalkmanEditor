@@ -21,6 +21,32 @@
             <BitmapImage x:Key="Icon.Navigator.Settings" UriSource="Resources/Image/Settings-icon-128.png"/>
             <BitmapImage x:Key="Icon.Navigator.Settings.Azure" UriSource="Resources/Image/Settings-Azure-TTS-Icon-128.png"/>
 
+            <!--Colors-->
+            <Color x:Key="MainContentForegroundColor">#FF1A1A1A</Color>
+            <Color x:Key="RegionColor">#FF1C1C1C</Color>
+            <Color x:Key="PrimaryTextColor">#FFFFFFFF</Color>
+            <Color x:Key="SecondaryTextColor">#FF757575</Color>
+
+            <!--Brushes-->
+            <SolidColorBrush x:Key="RegionBrush" Color="{DynamicResource RegionColor}"/>
+            <SolidColorBrush x:Key="MainContentForegroundBrush" Color="{DynamicResource MainContentForegroundColor}"/>
+            <SolidColorBrush x:Key="PrimaryTextBrush" Color="{DynamicResource PrimaryTextColor}"/>
+            <SolidColorBrush x:Key="SecondaryTextBrush" Color="{DynamicResource SecondaryTextColor}"/>
+            <DrawingBrush x:Key="MainContentForegroundDrawingBrush" RenderOptions.CachingHint="Cache" Viewport="0,0,16,16" ViewportUnits="Absolute" Stretch="None" TileMode="Tile">
+                <DrawingBrush.Drawing>
+                    <DrawingGroup>
+                        <GeometryDrawing Brush="{DynamicResource MainContentForegroundBrush}">
+                            <GeometryDrawing.Geometry>
+                                <GeometryGroup>
+                                    <RectangleGeometry Rect="0,0,8,8" />
+                                    <RectangleGeometry Rect="8,8,8,8" />
+                                </GeometryGroup>
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                </DrawingBrush.Drawing>
+            </DrawingBrush>
+            
             <!--Converters-->
             <converters:BooleanToVisibilityConverter  x:Key="BooleanToVisibilityConverter" />
             <converters:BooleanToVisibilityConverter  x:Key="BooleanToVisibilityReConverter" VisibilityOfTrue="Hidden" VisibilityOfFalse="Visible"/>
