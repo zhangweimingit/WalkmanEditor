@@ -44,7 +44,8 @@
                     <hc:TextBox Width="1000" Height="500" Padding="20"
                                 TextWrapping="Wrap" AcceptsReturn="True"
                                 FontSize="16" Foreground="{StaticResource SecondaryTextBrush}"
-                                VerticalContentAlignment="Top"/>
+                                VerticalContentAlignment="Top"
+                                Text="{Binding FirstStepEnglishPlainText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                 </TabItem>
                 <TabItem Header="生成中文翻译">
                     

@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using HandyControl.Controls;
+using HandyControl.Tools.Extension;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace DictionaryEditor.ViewModels
 {
@@ -37,12 +37,11 @@ namespace DictionaryEditor.ViewModels
                 }
             ];
         }
-        #endregion
 
         /// <summary>
         /// Next step
         /// </summary>
-        public ICommand NextStepCmd
+        public RelayCommand<Panel> NextStepCmd
         {
             get
             {
@@ -50,11 +49,16 @@ namespace DictionaryEditor.ViewModels
                 {
                     var stepBar = mainPanel.Children.OfType<StepBar>().FirstOrDefault();
                     stepBar.Next();
-                }, canExecute: mainPanel => 
+                }, canExecute: mainPanel =>
                 {
                     var stepBar = mainPanel.Children.OfType<StepBar>().FirstOrDefault();
-                    var dd = stepBar.StepIndex;
-                    return true;
+                    switch (stepBar.StepIndex) 
+                    { 
+                        case 0:
+                            return !FirstStepEnglishPlainText.IsNullOrEmpty();
+                        default: 
+                            return false;
+                    }
                 });
             }
         }
@@ -62,7 +66,7 @@ namespace DictionaryEditor.ViewModels
         /// <summary>
         /// Previous step
         /// </summary>
-        public ICommand PrevStepCmd
+        public RelayCommand<Panel> PrevStepCmd
         {
             get
             {
@@ -73,8 +77,23 @@ namespace DictionaryEditor.ViewModels
                 });
             }
         }
+        #endregion
 
-        private ICommand m_nextStepCmd;
-        private ICommand m_prevStepCmd;
+        /// <summary>
+        /// Used to hold text box for first step
+        /// </summary>
+        public string FirstStepEnglishPlainText
+        {
+            get => m_firstStepEnglishPlainText;
+            set
+            {
+                m_firstStepEnglishPlainText = value;
+                NextStepCmd.NotifyCanExecuteChanged();
+            }
+        }
+        private RelayCommand<Panel> m_nextStepCmd;
+        private RelayCommand<Panel> m_prevStepCmd;
+
+        private string m_firstStepEnglishPlainText;
     }
 }
