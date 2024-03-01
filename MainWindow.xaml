@@ -57,7 +57,7 @@
                     <hc:SideMenuItem Header="Azure密钥设置" 
                                      Command="{Binding SelectSideMuneItemCmd}" CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
                         <hc:SideMenuItem.Icon>
-                            <Image Source="{StaticResource Icon.Navigator.Settings.Azure}" Width="16" Height="16"/>
+                            <Image Source="{StaticResource Icon.Navigator.Settings.Azure.keys}" Width="16" Height="16"/>
                         </hc:SideMenuItem.Icon>
                     </hc:SideMenuItem>
                 </hc:SideMenuItem>
