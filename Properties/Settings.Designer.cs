@@ -46,5 +46,29 @@ namespace DictionaryEditor.Properties {
                 this["AzureTTSRegion"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string AzureTranslateKey {
+            get {
+                return ((string)(this["AzureTranslateKey"]));
+            }
+            set {
+                this["AzureTranslateKey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string AzureTranslateRegion {
+            get {
+                return ((string)(this["AzureTranslateRegion"]));
+            }
+            set {
+                this["AzureTranslateRegion"] = value;
+            }
+        }
     }
 }

@@ -29,10 +29,15 @@ namespace DictionaryEditor.ViewModels
             [
                 new() {
                     Name = "第一步",
+                    Remark = "选择编辑日期"
+                },
+                new()
+                {
+                    Name = "第二步",
                     Remark = "输入英文文本"
                 },
                 new() {
-                    Name = "第二步",
+                    Name = "第三步",
                     Remark = "生成中文翻译"
                 }
             ];

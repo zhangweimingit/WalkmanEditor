@@ -18,7 +18,7 @@ namespace DictionaryEditor.ViewModels
             Ioc.Default.ConfigureServices(
                 new ServiceCollection()
                 .AddSingleton<IMessenger>(new WeakReferenceMessenger())
-                .AddSingleton<AzureTTSSettingPageViewModel>()
+                .AddSingleton<AzureSettingPageViewModel>()
                 .AddSingleton<DailyEnglishPageViewModel>()
                 .AddSingleton<MainWindowViewModel>()
                 .BuildServiceProvider());
@@ -26,7 +26,7 @@ namespace DictionaryEditor.ViewModels
 
         public static MainWindowViewModel MainWindowViewModel => Ioc.Default.GetService<MainWindowViewModel>();
 
-        public static AzureTTSSettingPageViewModel AzureTTSSettingPageViewModel => Ioc.Default.GetService<AzureTTSSettingPageViewModel>();
+        public static AzureSettingPageViewModel AzureSettingPageViewModel => Ioc.Default.GetService<AzureSettingPageViewModel>();
 
         public static DailyEnglishPageViewModel DailyEnglishPageViewModel => Ioc.Default.GetService<DailyEnglishPageViewModel>();
     }

@@ -54,7 +54,7 @@
                     </hc:SideMenuItem.Icon>
 
                     <!--Azure TTS Settings-->
-                    <hc:SideMenuItem Header="TTS密钥设置" 
+                    <hc:SideMenuItem Header="Azure密钥设置" 
                                      Command="{Binding SelectSideMuneItemCmd}" CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
                         <hc:SideMenuItem.Icon>
                             <Image Source="{StaticResource Icon.Navigator.Settings.Azure}" Width="16" Height="16"/>
@@ -69,7 +69,7 @@
             <Grid Margin="16">
                 <views:DailyEnglishPage Visibility="{Binding  Path=DataContext.IsDailyEnglishItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                 <views:MyDictionaryPage Visibility="{Binding  Path=DataContext.IsMyDictionaryItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                <views:AzureTTSSettingPage Visibility="{Binding Path=DataContext.IsAzureTTSSettingItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                <views:AzureSettingPage Visibility="{Binding Path=DataContext.IsAzureSettingItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
             </Grid>
         </Border>
    

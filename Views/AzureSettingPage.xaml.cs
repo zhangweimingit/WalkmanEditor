@@ -18,9 +18,9 @@ namespace DictionaryEditor.Views
     /// <summary>
     /// Interaction logic for AzureTTSSettingPage.xaml
     /// </summary>
-    public partial class AzureTTSSettingPage : UserControl
+    public partial class AzureSettingPage : UserControl
     {
-        public AzureTTSSettingPage()
+        public AzureSettingPage()
         {
             InitializeComponent();
         }

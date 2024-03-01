@@ -53,15 +53,14 @@ namespace DictionaryEditor.ViewModels
             }
         }
 
-
         /// <summary>
-        /// Used to control the visibility of My Dictionary module
+        /// 用来控制 Azure密钥设置 页面的可见性
         /// </summary>
-        public bool IsAzureTTSSettingItemVisible
+        public bool IsAzureSettingItemVisible
         {
             get
             {
-                return SelectedSideMenuItemHeader == "TTS密钥设置";
+                return SelectedSideMenuItemHeader == "Azure密钥设置";
             }
         }
 
@@ -77,7 +76,7 @@ namespace DictionaryEditor.ViewModels
                 OnPropertyChanged(nameof(SelectedSideMenuItemHeader));
                 OnPropertyChanged(nameof(IsDailyEnglishItemVisible));
                 OnPropertyChanged(nameof(IsMyDictionaryItemVisible));
-                OnPropertyChanged(nameof(IsAzureTTSSettingItemVisible));
+                OnPropertyChanged(nameof(IsAzureSettingItemVisible));
             }
         }
 
