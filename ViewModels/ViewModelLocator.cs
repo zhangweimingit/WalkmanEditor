@@ -19,7 +19,7 @@ namespace DictionaryEditor.ViewModels
                 new ServiceCollection()
                 .AddSingleton<IMessenger>(new WeakReferenceMessenger())
                 .AddSingleton<AzureSettingPageViewModel>()
-                .AddSingleton<DailyEnglishPageViewModel>()
+                .AddSingleton<DailyNewsPageViewModel>()
                 .AddSingleton<MainWindowViewModel>()
                 .BuildServiceProvider());
         }
@@ -28,6 +28,6 @@ namespace DictionaryEditor.ViewModels
 
         public static AzureSettingPageViewModel AzureSettingPageViewModel => Ioc.Default.GetService<AzureSettingPageViewModel>();
 
-        public static DailyEnglishPageViewModel DailyEnglishPageViewModel => Ioc.Default.GetService<DailyEnglishPageViewModel>();
+        public static DailyNewsPageViewModel DailyNewsPageViewModel => Ioc.Default.GetService<DailyNewsPageViewModel>();
     }
 }

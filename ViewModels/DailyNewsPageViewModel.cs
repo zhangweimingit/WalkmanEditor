@@ -12,7 +12,7 @@ using System.Windows.Controls;
 
 namespace DictionaryEditor.ViewModels
 {
-    public class DailyEnglishPageViewModel : ObservableRecipient
+    public class DailyNewsPageViewModel : ObservableRecipient
     {
         #region Stepbar
         public class StepBarDataModel

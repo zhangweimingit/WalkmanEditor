@@ -34,11 +34,11 @@ namespace DictionaryEditor.ViewModels
         /// <summary>
         /// Used to control the visibility of Daily English module
         /// </summary>
-        public bool IsDailyEnglishItemVisible
+        public bool IsDailyNewsItemVisible
         {
             get 
             { 
-                return SelectedSideMenuItemHeader == "每日英语"; 
+                return SelectedSideMenuItemHeader == "每日新闻"; 
             }
         }
 
@@ -74,7 +74,7 @@ namespace DictionaryEditor.ViewModels
             { 
                 m_selectedSideMenuItemHeader = value;
                 OnPropertyChanged(nameof(SelectedSideMenuItemHeader));
-                OnPropertyChanged(nameof(IsDailyEnglishItemVisible));
+                OnPropertyChanged(nameof(IsDailyNewsItemVisible));
                 OnPropertyChanged(nameof(IsMyDictionaryItemVisible));
                 OnPropertyChanged(nameof(IsAzureSettingItemVisible));
             }

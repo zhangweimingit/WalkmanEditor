@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace DictionaryEditor.Views
 {
     /// <summary>
-    /// Interaction logic for DailyEnglishPage.xaml
+    /// Interaction logic for DailyNewsPage.xaml
     /// </summary>
-    public partial class DailyEnglishPage : UserControl
+    public partial class DailyNewsPage : UserControl
     {
-        public DailyEnglishPage()
+        public DailyNewsPage()
         {
             InitializeComponent();
         }

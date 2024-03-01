@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
-        Title="我的随身听后台编辑器"
+        Title="我的随身听编辑器"
         Icon="{StaticResource Icon.Application.Logo}"
         Height="450" Width="800"
         Background="{DynamicResource RegionBrush}"
@@ -31,7 +31,7 @@
                     </hc:SideMenuItem.Icon>
 
                     <!--Daily English-->
-                    <hc:SideMenuItem Header="每日英语" 
+                    <hc:SideMenuItem Header="每日新闻" 
                                      Command="{Binding SelectSideMuneItemCmd}" CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
                         <hc:SideMenuItem.Icon>
                             <Image Source="{StaticResource Icon.Navigator.Daily.english}" Width="16" Height="16"/>
@@ -67,8 +67,8 @@
         <!--Main content-->
         <Border Grid.Column="1" Background="{DynamicResource MainContentForegroundDrawingBrush}">
             <Grid Margin="16">
-                <views:DailyEnglishPage Visibility="{Binding  Path=DataContext.IsDailyEnglishItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                <views:MyDictionaryPage Visibility="{Binding  Path=DataContext.IsMyDictionaryItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                <views:DailyNewsPage Visibility="{Binding Path=DataContext.IsDailyNewsItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                <views:MyDictionaryPage Visibility="{Binding Path=DataContext.IsMyDictionaryItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                 <views:AzureSettingPage Visibility="{Binding Path=DataContext.IsAzureSettingItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
             </Grid>
         </Border>

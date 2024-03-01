@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace DictionaryEditor.Views
 {
     /// <summary>
-    /// Interaction logic for AzureTTSSettingPage.xaml
+    /// Interaction logic for AzureSettingPage.xaml
     /// </summary>
     public partial class AzureSettingPage : UserControl
     {
