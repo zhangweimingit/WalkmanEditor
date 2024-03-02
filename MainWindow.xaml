@@ -1,12 +1,12 @@
-﻿<hc:GlowWindow x:Class="DictionaryEditor.MainWindow"
+﻿<hc:GlowWindow x:Class="WalkmanEditor.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:hc="https://handyorg.github.io/handycontrol"
-        xmlns:local="clr-namespace:DictionaryEditor" 
-        xmlns:views="clr-namespace:DictionaryEditor.Views" 
-        xmlns:setting="clr-namespace:DictionaryEditor.Views.Setting"
+        xmlns:local="clr-namespace:WalkmanEditor" 
+        xmlns:edit="clr-namespace:WalkmanEditor.Views.Edit" 
+        xmlns:setting="clr-namespace:WalkmanEditor.Views.Setting"
         mc:Ignorable="d"
         WindowState="Maximized"
         Height="450" Width="800"
@@ -26,7 +26,7 @@
             <hc:SideMenu Margin="1">
                     
                 <!-- English Channel-->
-                <hc:SideMenuItem Header="词条编辑">
+                <hc:SideMenuItem Header="编辑">
                     <hc:SideMenuItem.Icon>
                         <Image Source="{StaticResource Icon.Application.Logo}" Width="30" Height="30"/>
                     </hc:SideMenuItem.Icon>
@@ -40,7 +40,7 @@
                     </hc:SideMenuItem>
 
                     <!--My Dictionary-->
-                    <hc:SideMenuItem Header="我的词典" 
+                    <hc:SideMenuItem Header="有声词典" 
                                      Command="{Binding SelectSideMuneItemCmd}" CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
                         <hc:SideMenuItem.Icon>
                             <Image Source="{StaticResource Icon.Navigator.My.Dictionary}"  Width="16" Height="16"/>
@@ -76,8 +76,8 @@
         <!--Main content-->
         <Border Grid.Column="1" Background="{DynamicResource MainContentForegroundDrawingBrush}">
             <Grid Margin="16">
-                <views:DailyNewsPage Visibility="{Binding Path=DataContext.IsDailyNewsItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                <views:MyDictionaryPage Visibility="{Binding Path=DataContext.IsMyDictionaryItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                <edit:DailyNewsPage Visibility="{Binding Path=DataContext.IsDailyNewsItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                <edit:AudibleDictionaryPage Visibility="{Binding Path=DataContext.IsAudibleDictionaryItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                 <setting:AzureSettingPage Visibility="{Binding Path=DataContext.IsAzureSettingItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                 <setting:StorageSettingPage Visibility="{Binding Path=DataContext.IsStorageSettingItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
             </Grid>

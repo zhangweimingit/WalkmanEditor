@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DictionaryEditor.Views
+namespace WalkmanEditor.Views.Edit
 {
     /// <summary>
     /// Interaction logic for DailyNewsPage.xaml

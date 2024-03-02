@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DictionaryEditor.Views
+namespace WalkmanEditor.Views.Edit
 {
     /// <summary>
-    /// Interaction logic for MyDictionaryPage.xaml
+    /// Interaction logic for AudibleDictionaryPage.xaml
     /// </summary>
-    public partial class MyDictionaryPage : UserControl
+    public partial class AudibleDictionaryPage : UserControl
     {
-        public MyDictionaryPage()
+        public AudibleDictionaryPage()
         {
             InitializeComponent();
         }

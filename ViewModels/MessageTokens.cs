@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DictionaryEditor.ViewModels
+namespace WalkmanEditor.ViewModels
 {
     public class MessageTokens
     {

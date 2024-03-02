@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DictionaryEditor", "DictionaryEditor.csproj", "{A9647BAE-1BBB-47AF-8B70-EEBF68574AB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WalkmanEditor", "WalkmanEditor.csproj", "{A9647BAE-1BBB-47AF-8B70-EEBF68574AB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

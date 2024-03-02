@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 
-namespace DictionaryEditor.Converters
+namespace WalkmanEditor.Converters
 {
     public class BooleanToVisibilityConverter : IValueConverter, IMultiValueConverter
     {

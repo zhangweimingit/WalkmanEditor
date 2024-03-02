@@ -1,9 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Messaging;
-using DictionaryEditor.ViewModels.Setting;
+using WalkmanEditor.ViewModels.Edit;
+using WalkmanEditor.ViewModels.Setting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace DictionaryEditor.ViewModels
+namespace WalkmanEditor.ViewModels
 {
     /// <summary>
     /// This class contains static references to all the view models in the
@@ -22,6 +24,7 @@ namespace DictionaryEditor.ViewModels
                 .AddSingleton<AzureSettingPageViewModel>()
                 .AddSingleton<StorageSettingPageViewModel>()
                 .AddSingleton<DailyNewsPageViewModel>()
+                .AddSingleton<AudibleDictionaryPageViewModel>()
                 .AddSingleton<MainWindowViewModel>()
                 .BuildServiceProvider());
         }
@@ -33,5 +36,8 @@ namespace DictionaryEditor.ViewModels
         public static StorageSettingPageViewModel StorageSettingPageViewModel => Ioc.Default.GetService<StorageSettingPageViewModel>();
 
         public static DailyNewsPageViewModel DailyNewsPageViewModel => Ioc.Default.GetService<DailyNewsPageViewModel>();
+
+        public static AudibleDictionaryPageViewModel AudibleDictionaryPageViewModel => Ioc.Default.GetService<AudibleDictionaryPageViewModel>();
+
     }
 }

@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace DictionaryEditor.ViewModels
+namespace WalkmanEditor.ViewModels.Edit
 {
     public class DailyNewsPageViewModel : ObservableRecipient
     {

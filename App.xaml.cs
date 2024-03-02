@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace DictionaryEditor
+namespace WalkmanEditor
 {
     /// <summary>
     /// Interaction logic for App.xaml

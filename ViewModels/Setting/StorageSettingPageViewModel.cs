@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace DictionaryEditor.ViewModels.Setting
+namespace WalkmanEditor.ViewModels.Setting
 {
     /// <summary>
     /// This class is used to store and retrieve the location of Publish and Archive repository

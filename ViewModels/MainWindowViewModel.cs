@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 
-namespace DictionaryEditor.ViewModels
+namespace WalkmanEditor.ViewModels
 {
     public class MainWindowViewModel : ObservableRecipient
     {
@@ -45,11 +45,11 @@ namespace DictionaryEditor.ViewModels
         /// <summary>
         /// Used to control the visibility of My Dictionary module
         /// </summary>
-        public bool IsMyDictionaryItemVisible
+        public bool IsAudibleDictionaryItemVisible
         {
             get
             {
-                return SelectedSideMenuItemHeader == "我的词典";
+                return SelectedSideMenuItemHeader == "有声词典";
             }
         }
 
@@ -86,7 +86,7 @@ namespace DictionaryEditor.ViewModels
                 m_selectedSideMenuItemHeader = value;
                 OnPropertyChanged(nameof(SelectedSideMenuItemHeader));
                 OnPropertyChanged(nameof(IsDailyNewsItemVisible));
-                OnPropertyChanged(nameof(IsMyDictionaryItemVisible));
+                OnPropertyChanged(nameof(IsAudibleDictionaryItemVisible));
                 OnPropertyChanged(nameof(IsAzureSettingItemVisible));
                 OnPropertyChanged(nameof(IsStorageSettingItemVisible));
             }

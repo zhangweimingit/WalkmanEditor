@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace DictionaryEditor.ViewModels.Setting
+namespace WalkmanEditor.ViewModels.Setting
 {
     /// <summary>
     /// This class is used to store and retrieve Microsoft Azure settings

@@ -1,10 +1,9 @@
-﻿<UserControl x:Class="DictionaryEditor.Views.Setting.AzureSettingPage"
+﻿<UserControl x:Class="WalkmanEditor.Views.Setting.AzureSettingPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:hc="https://handyorg.github.io/handycontrol"
-             xmlns:local="clr-namespace:DictionaryEditor.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              DataContext="{Binding Source={StaticResource Locator}, Path=AzureSettingPageViewModel}">
@@ -12,8 +11,7 @@
         <StackPanel>
             <!--Azure TTS key-->
             <GroupBox Header="微软Azure TTS 秘钥设置" 
-                      Margin="40,20,20,20" Width="450" 
-                      HorizontalAlignment="Left">
+                      Margin="40,20,20,20" Width="600">
                 <Border CornerRadius="4">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="10">
@@ -34,8 +32,7 @@
 
             <!--Azure Translate key-->
             <GroupBox Header="微软Azure 翻译 秘钥设置" 
-                      Margin="40,20,20,20" Width="450" 
-                      HorizontalAlignment="Left">
+                      Margin="40,20,20,20" Width="600">
                 <Border CornerRadius="4">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="10">
