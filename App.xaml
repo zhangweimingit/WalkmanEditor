@@ -16,8 +16,9 @@
 
             <!--Icons-->
             <BitmapImage x:Key="Icon.Application.Logo" UriSource="Resources/Image/Applicaton-Icon-128.png"/>
-            <BitmapImage x:Key="Icon.Navigator.Daily.english" UriSource="Resources/Image/Letter-A-Icon-128.png"/>
-            <BitmapImage x:Key="Icon.Navigator.My.Dictionary" UriSource="Resources/Image/Letter-B-Icon-128.png"/>
+            <BitmapImage x:Key="Icon.Navigator.Edit" UriSource="Resources/Image/Edit-icon-128.png"/>
+            <BitmapImage x:Key="Icon.Navigator.Daily.News" UriSource="Resources/Image/Edit-Daily-News-icon-128.png"/>
+            <BitmapImage x:Key="Icon.Navigator.Audible.Dictionary" UriSource="Resources/Image/Edit-Audible-Dictionary-icon-128.png"/>
             <BitmapImage x:Key="Icon.Navigator.Settings" UriSource="Resources/Image/Settings-icon-128.png"/>
             <BitmapImage x:Key="Icon.Navigator.Settings.Azure.keys" UriSource="Resources/Image/Settings-Azure-Keys-Icon-128.png"/>
             <BitmapImage x:Key="Icon.Navigator.Settings.Storage" UriSource="Resources/Image/Settings-Storage-Icon-128.png"/>

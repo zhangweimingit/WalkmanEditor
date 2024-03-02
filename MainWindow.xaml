@@ -13,7 +13,7 @@
         WindowStartupLocation="CenterScreen"
         Title="我的随身听编辑器"
         Icon="{StaticResource Icon.Application.Logo}"
-        Background="{DynamicResource RegionBrush}"
+        Background="{StaticResource RegionBrush}"
         DataContext="{Binding Source={hc:StaticResource Locator}, Path=MainWindowViewModel}">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -21,29 +21,28 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!--Side menu navigator-->
+        <!--Left navigation area-->
         <hc:TransitioningContentControl Grid.Column="0">
             <hc:SideMenu Margin="1">
-                    
-                <!-- English Channel-->
+                <!-- Edit area-->
                 <hc:SideMenuItem Header="编辑">
                     <hc:SideMenuItem.Icon>
-                        <Image Source="{StaticResource Icon.Application.Logo}" Width="30" Height="30"/>
+                        <Image Source="{StaticResource Icon.Navigator.Edit}" Width="30" Height="30"/>
                     </hc:SideMenuItem.Icon>
 
-                    <!--Daily English-->
+                    <!--Daily News Edit area-->
                     <hc:SideMenuItem Header="每日新闻" 
                                      Command="{Binding SelectSideMuneItemCmd}" CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
                         <hc:SideMenuItem.Icon>
-                            <Image Source="{StaticResource Icon.Navigator.Daily.english}" Width="16" Height="16"/>
+                            <Image Source="{StaticResource Icon.Navigator.Daily.News}" Width="16" Height="16"/>
                         </hc:SideMenuItem.Icon>
                     </hc:SideMenuItem>
 
-                    <!--My Dictionary-->
+                    <!--Audible Dictionary Edit area-->
                     <hc:SideMenuItem Header="有声词典" 
                                      Command="{Binding SelectSideMuneItemCmd}" CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
                         <hc:SideMenuItem.Icon>
-                            <Image Source="{StaticResource Icon.Navigator.My.Dictionary}"  Width="16" Height="16"/>
+                            <Image Source="{StaticResource Icon.Navigator.Audible.Dictionary}"  Width="16" Height="16"/>
                         </hc:SideMenuItem.Icon>
                     </hc:SideMenuItem>
                 </hc:SideMenuItem>
