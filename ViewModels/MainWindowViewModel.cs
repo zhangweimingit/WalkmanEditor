@@ -54,13 +54,24 @@ namespace DictionaryEditor.ViewModels
         }
 
         /// <summary>
-        /// 用来控制 Azure密钥设置 页面的可见性
+        /// Used to control the visibility of Azure Setting module
         /// </summary>
         public bool IsAzureSettingItemVisible
         {
             get
             {
                 return SelectedSideMenuItemHeader == "Azure密钥设置";
+            }
+        }
+
+        /// <summary>
+        /// Used to control the visibility of Storage Setting module
+        /// </summary>
+        public bool IsStorageSettingItemVisible
+        {
+            get
+            {
+                return SelectedSideMenuItemHeader == "数据存储设置";
             }
         }
 
@@ -77,6 +88,7 @@ namespace DictionaryEditor.ViewModels
                 OnPropertyChanged(nameof(IsDailyNewsItemVisible));
                 OnPropertyChanged(nameof(IsMyDictionaryItemVisible));
                 OnPropertyChanged(nameof(IsAzureSettingItemVisible));
+                OnPropertyChanged(nameof(IsStorageSettingItemVisible));
             }
         }
 

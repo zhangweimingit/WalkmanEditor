@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DictionaryEditor.Views
+namespace DictionaryEditor.Views.Setting
 {
     /// <summary>
-    /// Interaction logic for AzureSettingPage.xaml
+    /// Interaction logic for StorageSettingPage.xaml
     /// </summary>
-    public partial class AzureSettingPage : UserControl
+    public partial class StorageSettingPage : UserControl
     {
-        public AzureSettingPage()
+        public StorageSettingPage()
         {
             InitializeComponent();
         }

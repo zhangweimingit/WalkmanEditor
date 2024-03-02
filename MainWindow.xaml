@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:hc="https://handyorg.github.io/handycontrol"
         xmlns:local="clr-namespace:DictionaryEditor" 
-        xmlns:views="clr-namespace:DictionaryEditor.Views"
+        xmlns:views="clr-namespace:DictionaryEditor.Views" 
+        xmlns:setting="clr-namespace:DictionaryEditor.Views.Setting"
         mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
+        Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
         Title="我的随身听编辑器"
         Icon="{StaticResource Icon.Application.Logo}"
-        Height="450" Width="800"
         Background="{DynamicResource RegionBrush}"
         DataContext="{Binding Source={hc:StaticResource Locator}, Path=MainWindowViewModel}">
     <Grid>
@@ -60,6 +61,14 @@
                             <Image Source="{StaticResource Icon.Navigator.Settings.Azure.keys}" Width="16" Height="16"/>
                         </hc:SideMenuItem.Icon>
                     </hc:SideMenuItem>
+
+                    <!--Data Storage Settings-->
+                    <hc:SideMenuItem Header="数据存储设置" 
+                                     Command="{Binding SelectSideMuneItemCmd}" CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
+                        <hc:SideMenuItem.Icon>
+                            <Image Source="{StaticResource Icon.Navigator.Settings.Storage}" Width="16" Height="16"/>
+                        </hc:SideMenuItem.Icon>
+                    </hc:SideMenuItem>
                 </hc:SideMenuItem>
             </hc:SideMenu>
         </hc:TransitioningContentControl>
@@ -69,7 +78,8 @@
             <Grid Margin="16">
                 <views:DailyNewsPage Visibility="{Binding Path=DataContext.IsDailyNewsItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                 <views:MyDictionaryPage Visibility="{Binding Path=DataContext.IsMyDictionaryItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                <views:AzureSettingPage Visibility="{Binding Path=DataContext.IsAzureSettingItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                <setting:AzureSettingPage Visibility="{Binding Path=DataContext.IsAzureSettingItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                <setting:StorageSettingPage Visibility="{Binding Path=DataContext.IsStorageSettingItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
             </Grid>
         </Border>
    

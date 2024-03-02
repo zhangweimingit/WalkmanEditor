@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Messaging;
+using DictionaryEditor.ViewModels.Setting;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DictionaryEditor.ViewModels
@@ -19,6 +20,7 @@ namespace DictionaryEditor.ViewModels
                 new ServiceCollection()
                 .AddSingleton<IMessenger>(new WeakReferenceMessenger())
                 .AddSingleton<AzureSettingPageViewModel>()
+                .AddSingleton<StorageSettingPageViewModel>()
                 .AddSingleton<DailyNewsPageViewModel>()
                 .AddSingleton<MainWindowViewModel>()
                 .BuildServiceProvider());
@@ -27,6 +29,8 @@ namespace DictionaryEditor.ViewModels
         public static MainWindowViewModel MainWindowViewModel => Ioc.Default.GetService<MainWindowViewModel>();
 
         public static AzureSettingPageViewModel AzureSettingPageViewModel => Ioc.Default.GetService<AzureSettingPageViewModel>();
+
+        public static StorageSettingPageViewModel StorageSettingPageViewModel => Ioc.Default.GetService<StorageSettingPageViewModel>();
 
         public static DailyNewsPageViewModel DailyNewsPageViewModel => Ioc.Default.GetService<DailyNewsPageViewModel>();
     }

@@ -70,5 +70,29 @@ namespace DictionaryEditor.Properties {
                 this["AzureTranslateRegion"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DailyNewsPublishRepository {
+            get {
+                return ((string)(this["DailyNewsPublishRepository"]));
+            }
+            set {
+                this["DailyNewsPublishRepository"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DailyNewsArchiveRepository {
+            get {
+                return ((string)(this["DailyNewsArchiveRepository"]));
+            }
+            set {
+                this["DailyNewsArchiveRepository"] = value;
+            }
+        }
     }
 }
