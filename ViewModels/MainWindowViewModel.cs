@@ -1,12 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using HandyControl.Controls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 
 namespace WalkmanEditor.ViewModels
@@ -14,25 +7,21 @@ namespace WalkmanEditor.ViewModels
     public class MainWindowViewModel : ObservableRecipient
     {
         /// <summary>
-        /// This command is used to switch the editing area
+        /// This command is used to receive selected side menu
         /// </summary>
-        public ICommand SelectSideMuneItemCmd
+        public ICommand SelectSideMenuItemCmd
         {
             get 
             {
-                return m_selectSideMuneItemCmd ??= new RelayCommand<string>(header =>
+                return m_selectSideMenuItemCmd ??= new RelayCommand<string>(header =>
                 {
-
                     SelectedSideMenuItemHeader = header;
                 });
             }  
         }
-            
-
-
-
+ 
         /// <summary>
-        /// Used to control the visibility of Daily English module
+        /// Used to control the visibility of Daily News page
         /// </summary>
         public bool IsDailyNewsItemVisible
         {
@@ -43,7 +32,7 @@ namespace WalkmanEditor.ViewModels
         }
 
         /// <summary>
-        /// Used to control the visibility of My Dictionary module
+        /// Used to control the visibility of Audible Dictionary page
         /// </summary>
         public bool IsAudibleDictionaryItemVisible
         {
@@ -54,7 +43,7 @@ namespace WalkmanEditor.ViewModels
         }
 
         /// <summary>
-        /// Used to control the visibility of Azure Setting module
+        /// Used to control the visibility of Azure Setting page
         /// </summary>
         public bool IsAzureSettingItemVisible
         {
@@ -65,7 +54,7 @@ namespace WalkmanEditor.ViewModels
         }
 
         /// <summary>
-        /// Used to control the visibility of Storage Setting module
+        /// Used to control the visibility of Storage Setting page
         /// </summary>
         public bool IsStorageSettingItemVisible
         {
@@ -92,7 +81,7 @@ namespace WalkmanEditor.ViewModels
             }
         }
 
-        private ICommand m_selectSideMuneItemCmd;
+        private ICommand m_selectSideMenuItemCmd;
         private string   m_selectedSideMenuItemHeader = null;
     }
 }

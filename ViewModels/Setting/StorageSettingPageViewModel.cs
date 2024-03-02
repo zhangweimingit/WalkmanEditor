@@ -1,13 +1,7 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using HandyControl.Controls;
-using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Win32;
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace WalkmanEditor.ViewModels.Setting
 {
@@ -31,7 +25,7 @@ namespace WalkmanEditor.ViewModels.Setting
         }
 
         /// <summary>
-        /// An command to open daily news publish repository folder
+        /// An command to open folder dialog to set Daily News publish repository folder
         /// </summary>
         public ICommand SelectDailyNewsPublishRepositoryCmd
         {
@@ -50,9 +44,9 @@ namespace WalkmanEditor.ViewModels.Setting
                 });
             }
         }
-        
+
         /// <summary>
-        /// The location of daily news archive repository
+        /// The location of Daily News archive repository
         /// </summary>
         public string DailyNewsArchiveRepository
         {
@@ -66,7 +60,7 @@ namespace WalkmanEditor.ViewModels.Setting
         }
 
         /// <summary>
-        /// An command to open daily news archive repository folder
+        /// An command to open folder dialog to set Daily News archive repository folder
         /// </summary>
         public ICommand SelectDailyNewsArchiveRepositoryCmd
         {

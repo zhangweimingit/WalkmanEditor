@@ -32,7 +32,7 @@
 
                     <!--Daily News Edit area-->
                     <hc:SideMenuItem Header="每日新闻" 
-                                     Command="{Binding SelectSideMuneItemCmd}" CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
+                                     Command="{Binding SelectSideMenuItemCmd}" CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
                         <hc:SideMenuItem.Icon>
                             <Image Source="{StaticResource Icon.Navigator.Daily.News}" Width="16" Height="16"/>
                         </hc:SideMenuItem.Icon>
@@ -40,7 +40,7 @@
 
                     <!--Audible Dictionary Edit area-->
                     <hc:SideMenuItem Header="有声词典" 
-                                     Command="{Binding SelectSideMuneItemCmd}" CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
+                                     Command="{Binding SelectSideMenuItemCmd}" CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
                         <hc:SideMenuItem.Icon>
                             <Image Source="{StaticResource Icon.Navigator.Audible.Dictionary}"  Width="16" Height="16"/>
                         </hc:SideMenuItem.Icon>
@@ -55,7 +55,7 @@
 
                     <!--Azure TTS Settings-->
                     <hc:SideMenuItem Header="Azure密钥设置" 
-                                     Command="{Binding SelectSideMuneItemCmd}" CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
+                                     Command="{Binding SelectSideMenuItemCmd}" CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
                         <hc:SideMenuItem.Icon>
                             <Image Source="{StaticResource Icon.Navigator.Settings.Azure.keys}" Width="16" Height="16"/>
                         </hc:SideMenuItem.Icon>
@@ -63,7 +63,7 @@
 
                     <!--Data Storage Settings-->
                     <hc:SideMenuItem Header="数据存储设置" 
-                                     Command="{Binding SelectSideMuneItemCmd}" CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
+                                     Command="{Binding SelectSideMenuItemCmd}" CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
                         <hc:SideMenuItem.Icon>
                             <Image Source="{StaticResource Icon.Navigator.Settings.Storage}" Width="16" Height="16"/>
                         </hc:SideMenuItem.Icon>
@@ -72,7 +72,7 @@
             </hc:SideMenu>
         </hc:TransitioningContentControl>
 
-        <!--Main content-->
+        <!--Right content area-->
         <Border Grid.Column="1" Background="{DynamicResource MainContentForegroundDrawingBrush}">
             <Grid Margin="16">
                 <edit:DailyNewsPage Visibility="{Binding Path=DataContext.IsDailyNewsItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>

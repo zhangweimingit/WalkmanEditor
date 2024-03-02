@@ -3,7 +3,6 @@ using CommunityToolkit.Mvvm.Messaging;
 using WalkmanEditor.ViewModels.Edit;
 using WalkmanEditor.ViewModels.Setting;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace WalkmanEditor.ViewModels
 {
