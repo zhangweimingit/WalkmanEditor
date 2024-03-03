@@ -3,62 +3,105 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WalkmanEditor.Views" 
              xmlns:hc="https://handyorg.github.io/handycontrol"
-             xmlns:wpf="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1620"
              DataContext="{Binding Source={StaticResource Locator}, Path=DailyNewsPageViewModel}">
     <Grid Margin="10" Name="DailyNewsPanelMain">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-
-        <hc:StepBar Grid.ColumnSpan="2"
-                    ItemsSource="{Binding StepBarDataList}">
-            <hc:StepBar.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Name}" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left"/>
-                        <TextBlock Margin="0,4,0,0" Text="{Binding Remark}"/>
+        <StackPanel Orientation="Horizontal"
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center"
+                    Visibility="{Binding IsOpenOrNewButtonVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <!--Select the date to edit-->
+            <Calendar Margin="32,32,60,32" 
+                      SelectionMode="SingleDate" 
+                      SelectedDate="{Binding TargetDate}"/>
+            <!--Open or New button-->
+            <StackPanel VerticalAlignment="Center">
+                <Button Margin="10" 
+                    Width="160" 
+                    Height="48"
+                    Style="{StaticResource ButtonDashedPrimary}" >
+                    <StackPanel Orientation="Horizontal">
+                        <Path Margin="5,5,20,5" 
+                          Width="30" Height="20" 
+                          Stretch="Uniform" 
+                          Fill="{DynamicResource PrimaryBrush}"                         
+                          Data="{StaticResource CalendarGeometry}"/>
+                        <TextBlock VerticalAlignment="Center"
+                               FontSize="20"
+                               Text="打开" />
                     </StackPanel>
-                </DataTemplate>
-            </hc:StepBar.ItemTemplate>
-        </hc:StepBar>
-
-        <StackPanel Margin="10" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center">
-            <Button CommandParameter="{Binding ElementName=DailyNewsPanelMain}" Command="{Binding PrevStepCmd}" Width="180" Content="上一步" Style="{StaticResource ButtonPrimary}"/>
-            <Button CommandParameter="{Binding ElementName=DailyNewsPanelMain}" Command="{Binding NextStepCmd}" Width="180" Margin="0,16,0,0" Content="下一步" Style="{StaticResource ButtonPrimary}"/>
+                </Button>
+                <Button Margin="10" 
+                    Width="160" 
+                    Height="48"
+                    Style="{StaticResource ButtonDashedPrimary}" >
+                    <StackPanel Orientation="Horizontal">
+                        <Path Margin="5,5,20,5" 
+                          Width="30" Height="20" 
+                          Stretch="Uniform" 
+                          Fill="{DynamicResource PrimaryBrush}" 
+                          Data="{StaticResource NewGeometry}"/>
+                        <TextBlock VerticalAlignment="Center"
+                               FontSize="20"
+                               Text="新建" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
         </StackPanel>
 
-        <hc:TransitioningContentControl Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center">
-            <TabControl Style="{StaticResource TabControlInLine}">
-                <TabItem Header="选择编辑日期">
-                    <Grid Width="1000" Height="500">
-                        <hc:DatePicker Width="200" Height="60" Margin="0,0,0,32" SelectedDate="2019-10-28" hc:InfoElement.Placeholder="EnterContent" hc:InfoElement.Title="Must be filled in" hc:InfoElement.Necessary="True"/>
-                    </Grid>
-                </TabItem>
-                <TabItem Header="输入英文文本">
-                    <hc:TextBox Width="1000" Height="500" Padding="20"
-                                TextWrapping="Wrap" AcceptsReturn="True"
-                                FontSize="16" Foreground="{StaticResource SecondaryTextBrush}"
-                                VerticalContentAlignment="Top"
-                                Text="{Binding FirstStepEnglishPlainText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                </TabItem>
-                <TabItem Header="生成中文翻译">
-                    
-                </TabItem>
-                <TabItem Header="Small">
-                   
-                </TabItem>
-            </TabControl>
-        </hc:TransitioningContentControl>
+        <!--<Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <hc:StepBar Grid.ColumnSpan="2"
+             ItemsSource="{Binding StepBarDataList}">
+                <hc:StepBar.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Name}" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left"/>
+                            <TextBlock Margin="0,4,0,0" Text="{Binding Remark}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </hc:StepBar.ItemTemplate>
+            </hc:StepBar>
+
+            <StackPanel Margin="10" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+                <Button CommandParameter="{Binding ElementName=DailyNewsPanelMain}" Command="{Binding PrevStepCmd}" Width="180" Content="上一步" Style="{StaticResource ButtonPrimary}"/>
+                <Button CommandParameter="{Binding ElementName=DailyNewsPanelMain}" Command="{Binding NextStepCmd}" Width="180" Margin="0,16,0,0" Content="下一步" Style="{StaticResource ButtonPrimary}"/>
+            </StackPanel>
+
+            <hc:TransitioningContentControl Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+                <TabControl Style="{StaticResource TabControlInLine}">
+                    <TabItem Header="选择编辑日期">
+                        <Grid Width="1000" Height="500">
+                            <hc:DatePicker Width="200" Height="60" Margin="0,0,0,32" SelectedDate="2019-10-28" hc:InfoElement.Placeholder="EnterContent" hc:InfoElement.Title="Must be filled in" hc:InfoElement.Necessary="True"/>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="输入英文文本">
+                        <hc:TextBox Width="1000" Height="500" Padding="20"
+                         TextWrapping="Wrap" AcceptsReturn="True"
+                         FontSize="16" Foreground="{StaticResource SecondaryTextBrush}"
+                         VerticalContentAlignment="Top"
+                         Text="{Binding FirstStepEnglishPlainText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </TabItem>
+                    <TabItem Header="生成中文翻译">
+
+                    </TabItem>
+                    <TabItem Header="Small">
+
+                    </TabItem>
+                </TabControl>
+            </hc:TransitioningContentControl>
+        </Grid>-->
     </Grid>
 </UserControl>
