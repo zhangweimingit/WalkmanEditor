@@ -1,8 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Messaging;
-using WalkmanEditor.ViewModels.Edit;
-using WalkmanEditor.ViewModels.Setting;
 using Microsoft.Extensions.DependencyInjection;
+using WalkmanEditor.ViewModels.Edit;
+using WalkmanEditor.ViewModels.Edit.DailyNews;
+using WalkmanEditor.ViewModels.Setting;
 
 namespace WalkmanEditor.ViewModels
 {
@@ -23,9 +24,10 @@ namespace WalkmanEditor.ViewModels
                 .AddSingleton<AzureSettingPageViewModel>()
                 .AddSingleton<StorageSettingPageViewModel>()
                 .AddSingleton<DailyNewsPageViewModel>()
+                .AddSingleton<DailyNewsIntroPageViewModel>()
                 .AddSingleton<AudibleDictionaryPageViewModel>()
                 .AddSingleton<MainWindowViewModel>()
-                .BuildServiceProvider());
+                .BuildServiceProvider()); ;
         }
 
         public static MainWindowViewModel MainWindowViewModel => Ioc.Default.GetService<MainWindowViewModel>();
@@ -34,9 +36,14 @@ namespace WalkmanEditor.ViewModels
 
         public static StorageSettingPageViewModel StorageSettingPageViewModel => Ioc.Default.GetService<StorageSettingPageViewModel>();
 
-        public static DailyNewsPageViewModel DailyNewsPageViewModel => Ioc.Default.GetService<DailyNewsPageViewModel>();
 
         public static AudibleDictionaryPageViewModel AudibleDictionaryPageViewModel => Ioc.Default.GetService<AudibleDictionaryPageViewModel>();
 
+        #region Daily News
+        public static DailyNewsPageViewModel DailyNewsPageViewModel => Ioc.Default.GetService<DailyNewsPageViewModel>();
+
+        public static DailyNewsIntroPageViewModel DailyNewsIntroPageViewModel => Ioc.Default.GetService<DailyNewsIntroPageViewModel>();
+
+        #endregion
     }
 }
