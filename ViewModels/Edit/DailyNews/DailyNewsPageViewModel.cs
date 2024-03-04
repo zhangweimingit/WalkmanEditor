@@ -5,7 +5,7 @@ using HandyControl.Tools.Extension;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
 
-namespace WalkmanEditor.ViewModels.Edit
+namespace WalkmanEditor.ViewModels.Edit.DailyNews
 {
     public class DailyNewsPageViewModel : ObservableRecipient
     {
@@ -22,7 +22,7 @@ namespace WalkmanEditor.ViewModels.Edit
         /// <summary>
         /// Indicates the current state, which controls the display of the entire page.
         /// </summary>
-        public State CurrentState 
+        public State CurrentState
         {
             get => m_currentState;
             set
@@ -45,17 +45,17 @@ namespace WalkmanEditor.ViewModels.Edit
         /// <summary>
         /// Choose the date to edit content for
         /// </summary>
-        public DateTime TargetDate 
+        public DateTime TargetDate
         {
             get => m_targetDate;
-            set 
+            set
             {
-                m_targetDate = value; 
-                OnPropertyChanged(nameof(TargetDate)); 
+                m_targetDate = value;
+                OnPropertyChanged(nameof(TargetDate));
                 Growl.Info(m_targetDate.ToString());
             }
         }
-        private State    m_currentState = State.None;
+        private State m_currentState = State.None;
         private DateTime m_targetDate;
 
         #region Stepbar
@@ -71,7 +71,8 @@ namespace WalkmanEditor.ViewModels.Edit
         {
             return
             [
-                new() {
+                new()
+                {
                     Name = "第一步",
                     Remark = "选择编辑日期"
                 },
@@ -80,7 +81,8 @@ namespace WalkmanEditor.ViewModels.Edit
                     Name = "第二步",
                     Remark = "输入英文文本"
                 },
-                new() {
+                new()
+                {
                     Name = "第三步",
                     Remark = "生成中文翻译"
                 }
@@ -101,11 +103,11 @@ namespace WalkmanEditor.ViewModels.Edit
                 }, canExecute: mainPanel =>
                 {
                     var stepBar = mainPanel.Children.OfType<StepBar>().FirstOrDefault();
-                    switch (stepBar.StepIndex) 
-                    { 
+                    switch (stepBar.StepIndex)
+                    {
                         case 0:
                             return !FirstStepEnglishPlainText.IsNullOrEmpty();
-                        default: 
+                        default:
                             return false;
                     }
                 });
