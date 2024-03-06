@@ -3,53 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:hc="https://handyorg.github.io/handycontrol"
+             xmlns:hc="https://handyorg.github.io/handycontrol" 
+             xmlns:dailynews="clr-namespace:WalkmanEditor.Views.Edit.DailyNews"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1620"
              DataContext="{Binding Source={StaticResource Locator}, Path=DailyNewsPageViewModel}">
     <Grid Margin="10" Name="DailyNewsPanelMain">
-        <StackPanel Orientation="Horizontal"
-                    VerticalAlignment="Center" 
-                    HorizontalAlignment="Center"
-                    Visibility="{Binding IsOpenOrNewButtonVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
-            <!--Select the date to edit-->
-            <Calendar Margin="32,32,60,32" 
-                      SelectionMode="SingleDate" 
-                      SelectedDate="{Binding TargetDate}"/>
-            <!--Open or New button-->
-            <StackPanel VerticalAlignment="Center">
-                <Button Margin="10" 
-                    Width="160" 
-                    Height="48"
-                    Style="{StaticResource ButtonDashedPrimary}" >
-                    <StackPanel Orientation="Horizontal">
-                        <Path Margin="5,5,20,5" 
-                          Width="30" Height="20" 
-                          Stretch="Uniform" 
-                          Fill="{DynamicResource PrimaryBrush}"                         
-                          Data="{StaticResource CalendarGeometry}"/>
-                        <TextBlock VerticalAlignment="Center"
-                               FontSize="20"
-                               Text="打开" />
-                    </StackPanel>
-                </Button>
-                <Button Margin="10" 
-                    Width="160" 
-                    Height="48"
-                    Style="{StaticResource ButtonDashedPrimary}" >
-                    <StackPanel Orientation="Horizontal">
-                        <Path Margin="5,5,20,5" 
-                          Width="30" Height="20" 
-                          Stretch="Uniform" 
-                          Fill="{DynamicResource PrimaryBrush}" 
-                          Data="{StaticResource NewGeometry}"/>
-                        <TextBlock VerticalAlignment="Center"
-                               FontSize="20"
-                               Text="新建" />
-                    </StackPanel>
-                </Button>
-            </StackPanel>
-        </StackPanel>
+        <dailynews:DailyNewsIntroPage/>
 
         <!--<Grid>
             <Grid.RowDefinitions>

@@ -52,6 +52,7 @@
             <!--Converters-->
             <converters:BooleanToVisibilityConverter  x:Key="BooleanToVisibilityConverter" />
             <converters:BooleanToVisibilityConverter  x:Key="BooleanToVisibilityReConverter" VisibilityOfTrue="Hidden" VisibilityOfFalse="Visible"/>
+            <hc:String2VisibilityReConverter  x:Key="String2VisibilityReConverter"/>
 
             <!--ViewModel resource-->
             <viewmodels:ViewModelLocator x:Key="Locator"/>

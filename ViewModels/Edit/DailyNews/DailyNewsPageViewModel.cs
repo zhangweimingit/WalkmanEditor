@@ -22,41 +22,27 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
         /// <summary>
         /// Indicates the current state, which controls the display of the entire page.
         /// </summary>
-        public State CurrentState
-        {
-            get => m_currentState;
-            set
-            {
-                m_currentState = value;
-                OnPropertyChanged(nameof(CurrentState));
-                OnPropertyChanged(nameof(IsOpenOrNewButtonVisible));
-            }
-        }
+        //public State CurrentState
+        //{
+        //    get => m_currentState;
+        //    set
+        //    {
+        //        m_currentState = value;
+        //        OnPropertyChanged(nameof(CurrentState));
+        //        OnPropertyChanged(nameof(IsOpenOrNewButtonVisible));
+        //    }
+        //}
 
 
         /// <summary>
         /// Control the visibility of Open or New button
         /// </summary>
-        public bool IsOpenOrNewButtonVisible
-        {
-            get => CurrentState == State.None;
-        }
+        //public bool IsOpenOrNewButtonVisible
+        //{
+        //    get => CurrentState == State.None;
+        //}
 
-        /// <summary>
-        /// Choose the date to edit content for
-        /// </summary>
-        public DateTime TargetDate
-        {
-            get => m_targetDate;
-            set
-            {
-                m_targetDate = value;
-                OnPropertyChanged(nameof(TargetDate));
-                Growl.Info(m_targetDate.ToString());
-            }
-        }
-        private State m_currentState = State.None;
-        private DateTime m_targetDate;
+
 
         #region Stepbar
         public class StepBarDataModel

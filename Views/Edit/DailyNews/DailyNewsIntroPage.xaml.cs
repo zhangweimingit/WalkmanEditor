@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace WalkmanEditor.Views.Edit.DailyNews
 {
     /// <summary>
-    /// Interaction logic for OpenAndNewPage.xaml
+    /// Interaction logic for DailyNewsIntroPage.xaml
     /// </summary>
-    public partial class OpenAndNewPage : UserControl
+    public partial class DailyNewsIntroPage : UserControl
     {
-        public OpenAndNewPage()
+        public DailyNewsIntroPage()
         {
             InitializeComponent();
         }

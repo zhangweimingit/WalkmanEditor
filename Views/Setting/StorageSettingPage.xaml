@@ -18,7 +18,7 @@
                             <TextBlock Margin="10,0,10,0" Width="100"
                                        VerticalAlignment="Center"
                                        Text="发布仓库"/>
-                            <TextBox Width="300" Text="{Binding DailyNewsPublishRepository, Mode=TwoWay}"/>
+                            <TextBox Width="300" Text="{Binding DailyNewsPublishRepository, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                             <Button Margin="10,0,0,0" Width="80" Padding="3" 
                                     hc:BorderElement.CornerRadius="2"
                                     Foreground="{DynamicResource TextIconBrush}"
@@ -29,7 +29,7 @@
                             <TextBlock Margin="10,0,10,0" Width="100"
                                        VerticalAlignment="Center"
                                        Text="归档仓库"/>
-                            <TextBox Width="300" Text="{Binding DailyNewsArchiveRepository, Mode=TwoWay}"/>
+                            <TextBox Width="300" Text="{Binding DailyNewsArchiveRepository, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                             <Button Margin="10,0,0,0" Width="80" Padding="3" 
                                     hc:BorderElement.CornerRadius="2"
                                     Foreground="{DynamicResource TextIconBrush}"
