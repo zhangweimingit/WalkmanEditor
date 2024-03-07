@@ -4,69 +4,153 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WalkmanEditor.Views.Edit.DailyNews"
+             xmlns:hc="https://handyorg.github.io/handycontrol"
              xmlns:prop="clr-namespace:WalkmanEditor.Properties"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              DataContext="{Binding Source={StaticResource Locator}, Path=DailyNewsIntroPageViewModel}">
-    <Grid HorizontalAlignment="Center" 
-          VerticalAlignment="Center">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
+    <StackPanel Orientation="Horizontal" 
+                HorizontalAlignment="Center" VerticalAlignment="Center">
 
-        <!--Warning message-->
-        <StackPanel Grid.Row="0"
-                    Grid.Column="0" Grid.ColumnSpan="2"
-                    HorizontalAlignment="Center">
-            <StackPanel Orientation="Horizontal"
-                        Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=DailyNewsPublishRepository, Converter={StaticResource String2VisibilityReConverter}}">
-                <TextBlock FontSize="16" FontWeight="Bold" Foreground="Red"
-                           Text="*注意：" />
-                <TextBlock FontSize="16" Foreground="Red"
-                           Text="请先去 设置->数据存储设置 设置每日新闻 发布仓库 目录"/>
+        <!--Setting missing message-->
+        <Border BorderThickness="1" 
+                BorderBrush="{DynamicResource WarningBrush}"
+                Height="350">
+            <StackPanel>
+                <!--Warning Header-->
+                <Border Height="50"
+                        Background="{DynamicResource WarningBrush}">
+                    <TextBlock Text="警告：配置缺失" 
+                               FontSize="20" 
+                               VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Border>
+                
+                <!-- Warning body-->
+                <StackPanel Orientation="Horizontal">
+                    <!--Warning Icon-->
+                    <Path Margin="20" Stretch="Uniform"
+                          Height="30" Width="30"
+                          VerticalAlignment="Top"
+                          Fill="{DynamicResource WarningBrush}" 
+                          Data="{StaticResource WarningGeometry}"/>
+                    
+                    <!--Warning mwssage-->
+                    <StackPanel HorizontalAlignment="Center"
+                                Margin="0,40,20,20">
+                        <!--Publish repository-->
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+                            <TextBlock Width="300" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left"
+                                       Text="发布仓库" />
+                            <Path Margin="5" Width="20" Height="20" Stretch="Uniform"
+                                  Fill="{DynamicResource DangerBrush}" 
+                                  Data="{StaticResource ErrorGeometry}"
+                                  Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=DailyNewsPublishRepository, Converter={StaticResource String2VisibilityReConverter}}"/>
+                            <Path Margin="5" Width="20" Height="20" Stretch="Uniform"
+                                  Fill="{DynamicResource SuccessBrush}" 
+                                  Data="{StaticResource SuccessGeometry}"
+                                  Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=DailyNewsPublishRepository, Converter={StaticResource String2VisibilityConverter}}"/>
+                            <Button Margin="50,5,5,5" Height="28"
+                                    Content="设置"
+                                    Style="{StaticResource ButtonDashedPrimary}" >
+                            </Button>
+                        </StackPanel>
+                        
+                        <!--Archive repository-->
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+                            <TextBlock Width="300" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left"
+                                       Text="归档仓库" />
+                            <Path Margin="5" Width="20" Height="20" Stretch="Uniform"
+                                  Fill="{DynamicResource DangerBrush}" 
+                                  Data="{StaticResource ErrorGeometry}"
+                                  Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=DailyNewsArchiveRepository, Converter={StaticResource String2VisibilityReConverter}}"/>
+                            <Path Margin="5" Width="20" Height="20" Stretch="Uniform"
+                                  Fill="{DynamicResource SuccessBrush}" 
+                                  Data="{StaticResource SuccessGeometry}"
+                                  Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=DailyNewsArchiveRepository, Converter={StaticResource String2VisibilityConverter}}"/>
+                            <Button Margin="50,5,5,5" Height="28"
+                                    Content="设置"
+                                    Style="{StaticResource ButtonDashedPrimary}" >
+                            </Button>
+                        </StackPanel>
+                        <!--TTS Key-->
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+                            <TextBlock Width="300" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left"
+                                       Text="Azure TTS Key" />
+                            <Path Margin="5" Width="20" Height="20" Stretch="Uniform"
+                                  Fill="{DynamicResource DangerBrush}" 
+                                  Data="{StaticResource ErrorGeometry}"
+                                  Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=AzureTTSKey, Converter={StaticResource String2VisibilityReConverter}}"/>
+                            <Path Margin="5" Width="20" Height="20" Stretch="Uniform"
+                                  Fill="{DynamicResource SuccessBrush}" 
+                                  Data="{StaticResource SuccessGeometry}"
+                                  Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=AzureTTSKey, Converter={StaticResource String2VisibilityConverter}}"/>
+                            <Button Margin="50,5,5,5" Height="28"
+                                    Content="设置"
+                                    Style="{StaticResource ButtonDashedPrimary}" >
+                            </Button>
+                        </StackPanel>
+                        <!--TTS Region-->
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+                            <TextBlock Width="300" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left"
+                                       Text="Azure TTS Region" />
+                            <Path Margin="5" Width="20" Height="20" Stretch="Uniform"
+                                  Fill="{DynamicResource DangerBrush}" 
+                                  Data="{StaticResource ErrorGeometry}"
+                                  Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=AzureTTSRegion, Converter={StaticResource String2VisibilityReConverter}}"/>
+                            <Path Margin="5" Width="20" Height="20" Stretch="Uniform"
+                                  Fill="{DynamicResource SuccessBrush}" 
+                                  Data="{StaticResource SuccessGeometry}"
+                                  Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=AzureTTSRegion, Converter={StaticResource String2VisibilityConverter}}"/>
+                            <Button Margin="50,5,5,5" Height="28"
+                                    Content="设置"
+                                    Style="{StaticResource ButtonDashedPrimary}" >
+                            </Button>
+                        </StackPanel>
+                        <!--Translate key-->
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+                            <TextBlock Width="300" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left"
+                                       Text="Azure Translate Key" />
+                            <Path Margin="5" Width="20" Height="20" Stretch="Uniform"
+                                  Fill="{DynamicResource DangerBrush}" 
+                                  Data="{StaticResource ErrorGeometry}"
+                                  Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=AzureTranslateKey, Converter={StaticResource String2VisibilityReConverter}}"/>
+                            <Path Margin="5" Width="20" Height="20" Stretch="Uniform"
+                                  Fill="{DynamicResource SuccessBrush}" 
+                                  Data="{StaticResource SuccessGeometry}"
+                                  Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=AzureTranslateKey, Converter={StaticResource String2VisibilityConverter}}"/>
+                            <Button Margin="50,5,5,5" Height="28"
+                                    Content="设置"
+                                    Style="{StaticResource ButtonDashedPrimary}" >
+                            </Button>
+                        </StackPanel>
+                        <!--Translate region-->
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+                            <TextBlock Width="300" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left"
+                                       Text="Azure Translae region" />
+                            <Path Margin="5" Width="20" Height="20" Stretch="Uniform"
+                                  Fill="{DynamicResource DangerBrush}" 
+                                  Data="{StaticResource ErrorGeometry}"
+                                  Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=AzureTranslateRegion, Converter={StaticResource String2VisibilityReConverter}}"/>
+                            <Path Margin="5" Width="20" Height="20" Stretch="Uniform"
+                                  Fill="{DynamicResource SuccessBrush}" 
+                                  Data="{StaticResource SuccessGeometry}"
+                                  Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=AzureTranslateRegion, Converter={StaticResource String2VisibilityConverter}}"/>
+                            <Button Margin="50,5,5,5" Height="28"
+                                    Content="设置"
+                                    Style="{StaticResource ButtonDashedPrimary}" >
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Horizontal"
-                        Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=DailyNewsArchiveRepository, Converter={StaticResource String2VisibilityReConverter}}">
-                <TextBlock FontSize="16" FontWeight="Bold" Foreground="Red"
-                           Text="*注意：" />
-                <TextBlock FontSize="16" Foreground="Red"
-                           Text="请先去 设置->数据存储设置 设置每日新闻 归档仓库 目录"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal"
-                        Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=AzureTTSKey, Converter={StaticResource String2VisibilityReConverter}}">
-                <TextBlock FontSize="16" FontWeight="Bold" Foreground="Red"
-                           Text="*注意：" />
-                <TextBlock FontSize="16" Foreground="Red"
-                           Text="请先去 设置->Azure密钥设置 设置TTS Key"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal"
-                        Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=AzureTTSRegion, Converter={StaticResource String2VisibilityReConverter}}">
-                <TextBlock FontSize="16" FontWeight="Bold" Foreground="Red"
-                           Text="*注意：" />
-                <TextBlock FontSize="16" Foreground="Red"
-                           Text="请先去 设置->Azure密钥设置 设置TTS Region"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal"
-                        Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=AzureTranslateKey, Converter={StaticResource String2VisibilityReConverter}}">
-                <TextBlock FontSize="16" FontWeight="Bold" Foreground="Red"
-                           Text="*注意：" />
-                <TextBlock FontSize="16" Foreground="Red"
-                           Text="请先去 设置->Azure密钥设置 设置Azure翻译Key"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal"
-                        Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=AzureTranslateRegion, Converter={StaticResource String2VisibilityReConverter}}">
-                <TextBlock FontSize="16" FontWeight="Bold" Foreground="Red"
-                           Text="*注意：" />
-                <TextBlock FontSize="16" Foreground="Red"
-                           Text="请先去 设置->Azure密钥设置 设置Azure翻译Region"/>
-            </StackPanel>
-        </StackPanel>
-
+        </Border>
+            
         <!--Select the date to edit content for-->
         <Calendar Grid.Row="1" Grid.Column="0"
                   Margin="32,32,60,32" 
@@ -107,5 +191,5 @@
                 </StackPanel>
             </Button>
         </StackPanel>
-    </Grid>
+    </StackPanel>
 </UserControl>

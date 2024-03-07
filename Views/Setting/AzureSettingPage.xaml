@@ -17,13 +17,13 @@
                             <TextBlock Margin="10,0,10,0" Width="100"
                                        VerticalAlignment="Center"
                                        Text="key"/>
-                            <TextBox Width="300" Text="{Binding AzureTTSKey, Mode=TwoWay}"/>
+                            <TextBox Width="300" Text="{Binding AzureTTSKey, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="10">
                             <TextBlock Margin="10,0,10,0" Width="100"
                                        VerticalAlignment="Center"
                                        Text="Region"/>
-                            <TextBox Width="300" Text="{Binding AzureTTSRegion, Mode=TwoWay}"/>
+                            <TextBox Width="300" Text="{Binding AzureTTSRegion, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         </StackPanel>
                     </StackPanel>
                 </Border>
@@ -38,13 +38,13 @@
                             <TextBlock Margin="10,0,10,0" Width="100"
                                        VerticalAlignment="Center"
                                        Text="key"/>
-                            <TextBox Width="300" Text="{Binding AzureTranslateKey, Mode=TwoWay}"/>
+                            <TextBox Width="300" Text="{Binding AzureTranslateKey, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="10">
                             <TextBlock Margin="10,0,10,0" Width="100"
                                        VerticalAlignment="Center"
                                        Text="Region"/>
-                            <TextBox Width="300" Text="{Binding AzureTranslateRegion, Mode=TwoWay}"/>
+                            <TextBox Width="300" Text="{Binding AzureTranslateRegion, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         </StackPanel>
                     </StackPanel>
                 </Border>

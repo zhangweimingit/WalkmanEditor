@@ -28,12 +28,18 @@
             <Color x:Key="RegionColor">#FF1C1C1C</Color>
             <Color x:Key="PrimaryTextColor">#FFFFFFFF</Color>
             <Color x:Key="SecondaryTextColor">#FFB4B4B4</Color>
-
+            <Color x:Key="WarningColor">#FFE9AF20</Color>
+            <Color x:Key="DangerColor">#FFDB3340</Color>
+            <Color x:Key="SuccessColor">#FF2DB84d</Color>
+            
             <!--Brushes-->
             <SolidColorBrush x:Key="RegionBrush" Color="{DynamicResource RegionColor}"/>
             <SolidColorBrush x:Key="MainContentForegroundBrush" Color="{DynamicResource MainContentForegroundColor}"/>
             <SolidColorBrush x:Key="PrimaryTextBrush" Color="{DynamicResource PrimaryTextColor}"/>
             <SolidColorBrush x:Key="SecondaryTextBrush" Color="{DynamicResource SecondaryTextColor}"/>
+            <SolidColorBrush x:Key="WarningBrush" Color="{DynamicResource WarningColor}"/>
+            <SolidColorBrush x:Key="DangerBrush" Color="{DynamicResource DangerColor}"/>
+            <SolidColorBrush x:Key="SuccessBrush" Color="{DynamicResource SuccessColor}"/>
             <DrawingBrush x:Key="MainContentForegroundDrawingBrush" RenderOptions.CachingHint="Cache" Viewport="0,0,16,16" ViewportUnits="Absolute" Stretch="None" TileMode="Tile">
                 <DrawingBrush.Drawing>
                     <DrawingGroup>
@@ -52,8 +58,10 @@
             <!--Converters-->
             <converters:BooleanToVisibilityConverter  x:Key="BooleanToVisibilityConverter" />
             <converters:BooleanToVisibilityConverter  x:Key="BooleanToVisibilityReConverter" VisibilityOfTrue="Hidden" VisibilityOfFalse="Visible"/>
-            <hc:String2VisibilityReConverter  x:Key="String2VisibilityReConverter"/>
-
+            <converters:String2BooleanReConverter  x:Key="String2BooleanReConverter"/>
+            <hc:String2VisibilityConverter x:Key="String2VisibilityConverter"/>
+            <hc:String2VisibilityReConverter x:Key="String2VisibilityReConverter"/>
+            
             <!--ViewModel resource-->
             <viewmodels:ViewModelLocator x:Key="Locator"/>
         </ResourceDictionary>
