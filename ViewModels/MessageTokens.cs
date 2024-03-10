@@ -8,6 +8,6 @@ namespace WalkmanEditor.ViewModels
 {
     public class MessageTokens
     {
-        public static readonly string xxxx = nameof(xxxx);
+        public static readonly string SelectSideMenuItem = nameof(SelectSideMenuItem);
     }
 }

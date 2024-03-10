@@ -12,6 +12,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <hc:ThemeResources RequestedTheme="Dark"/>
                 <hc:Theme/>
+                <ResourceDictionary Source="Resources/Style/Geometry.xaml"/>
+                <ResourceDictionary Source="Resources/Constant.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <!--Icons-->
@@ -59,9 +61,11 @@
             <converters:BooleanToVisibilityConverter  x:Key="BooleanToVisibilityConverter" />
             <converters:BooleanToVisibilityConverter  x:Key="BooleanToVisibilityReConverter" VisibilityOfTrue="Hidden" VisibilityOfFalse="Visible"/>
             <converters:String2BooleanReConverter  x:Key="String2BooleanReConverter"/>
+            <converters:String2BooleanConverter  x:Key="String2BooleanConverter"/>
             <hc:String2VisibilityConverter x:Key="String2VisibilityConverter"/>
             <hc:String2VisibilityReConverter x:Key="String2VisibilityReConverter"/>
-            
+            <hc:BooleanArr2BooleanConverter x:Key="BooleanArr2BooleanConverter"/>
+
             <!--ViewModel resource-->
             <viewmodels:ViewModelLocator x:Key="Locator"/>
         </ResourceDictionary>

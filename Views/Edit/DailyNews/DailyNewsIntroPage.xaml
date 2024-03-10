@@ -9,11 +9,203 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              DataContext="{Binding Source={StaticResource Locator}, Path=DailyNewsIntroPageViewModel}">
-    <StackPanel Orientation="Horizontal" 
-                HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Grid>
+        <!--Setting-->
+        <hc:TransitioningContentControl HorizontalAlignment="Right"  
+                                        VerticalAlignment="Top">
+            <StackPanel>
+                <Expander hc:BorderElement.CornerRadius="0" ExpandDirection="Left">
+                    <Expander.Header>
+                        <Border Height="30" Width="60" HorizontalAlignment="Center">
+                            <TextBlock FontSize="14"
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Center"
+                                       Foreground="{DynamicResource TextIconBrush}"
+                                       Text="设置">
+                                <TextBlock.LayoutTransform>
+                                    <RotateTransform Angle="180"/>
+                                </TextBlock.LayoutTransform>
+                            </TextBlock>
+                        </Border>
+                    </Expander.Header>
+                    <Expander.Style>
+                        <Style TargetType="Expander" BasedOn="{StaticResource {x:Type Expander}}">
+                            <Setter Property="Background" Value="{DynamicResource PrimaryBrush}" />
+                            <Style.Triggers>
+                                <DataTrigger Value="false">
+                                    <DataTrigger.Binding>
+                                        <MultiBinding Converter="{StaticResource BooleanArr2BooleanConverter}">
+                                            <Binding Source="{x:Static prop:Settings.Default}" Path="DailyNewsPublishRepository" Converter="{StaticResource String2BooleanConverter}"/>
+                                            <Binding Source="{x:Static prop:Settings.Default}" Path="DailyNewsArchiveRepository" Converter="{StaticResource String2BooleanConverter}"/>
+                                            <Binding Source="{x:Static prop:Settings.Default}" Path="AzureTTSKey" Converter="{StaticResource String2BooleanConverter}"/>
+                                            <Binding Source="{x:Static prop:Settings.Default}" Path="AzureTTSRegion" Converter="{StaticResource String2BooleanConverter}"/>
+                                            <Binding Source="{x:Static prop:Settings.Default}" Path="AzureTranslateKey" Converter="{StaticResource String2BooleanConverter}"/>
+                                            <Binding Source="{x:Static prop:Settings.Default}" Path="AzureTranslateRegion" Converter="{StaticResource String2BooleanConverter}"/>
+                                        </MultiBinding>
+                                    </DataTrigger.Binding>
+                                    <Setter Property="Background" Value="{DynamicResource WarningBrush}"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Expander.Style>
+                    <hc:UniformSpacingPanel Spacing="30" Margin="20" Background="{DynamicResource RegionBrush}">
+                        <StackPanel>
+                            <Button Width="32" Height="32" Margin="5" Style="{StaticResource ButtonCustom}"
+                                    Command="{Binding SelectSideMenuItemCmd}" CommandParameter="{StaticResource SideMenu.Setting.DataStorage.Header}">
+                                <Path Margin="0" Stretch="Uniform" Data="{StaticResource Geometry.Archive.Storage}">
+                                    <Path.Style>
+                                        <Style TargetType="Path" >
+                                            <Setter Property="Fill" Value="{DynamicResource WarningBrush}" />
+                                            <Style.Triggers>
+                                                <DataTrigger Value="true">
+                                                    <DataTrigger.Binding>
+                                                        <MultiBinding Converter="{StaticResource BooleanArr2BooleanConverter}">
+                                                            <Binding Source="{x:Static prop:Settings.Default}" Path="DailyNewsPublishRepository" Converter="{StaticResource String2BooleanConverter}"/>
+                                                            <Binding Source="{x:Static prop:Settings.Default}" Path="DailyNewsArchiveRepository" Converter="{StaticResource String2BooleanConverter}"/>
+                                                        </MultiBinding>
+                                                    </DataTrigger.Binding>
+                                                    <Setter Property="Fill" Value="{DynamicResource PrimaryBrush}"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Path.Style>
+                                </Path>
+                            </Button>
+                            <TextBlock Text="数据存储"/>
+                        </StackPanel>
+                        <StackPanel>
+                            <Button Width="32" Height="32" Margin="5" Style="{StaticResource ButtonCustom}"
+                                    Command="{Binding SelectSideMenuItemCmd}" CommandParameter="{StaticResource SideMenu.Setting.AzureKeys.Header}">
+                                <Path Margin="2" Stretch="Uniform" Data="{StaticResource Geometry.Speech.Synthesis}">
+                                    <Path.Style>
+                                        <Style TargetType="Path" >
+                                            <Setter Property="Fill" Value="{DynamicResource WarningBrush}" />
+                                            <Style.Triggers>
+                                                <DataTrigger Value="true">
+                                                    <DataTrigger.Binding>
+                                                        <MultiBinding Converter="{StaticResource BooleanArr2BooleanConverter}">
+                                                            <Binding Source="{x:Static prop:Settings.Default}" Path="AzureTTSKey" Converter="{StaticResource String2BooleanConverter}"/>
+                                                            <Binding Source="{x:Static prop:Settings.Default}" Path="AzureTTSRegion" Converter="{StaticResource String2BooleanConverter}"/>
+                                                        </MultiBinding>
+                                                    </DataTrigger.Binding>
+                                                    <Setter Property="Fill" Value="{DynamicResource PrimaryBrush}"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Path.Style>
+                                </Path>
+                            </Button>
+                            <TextBlock Text="语音合成"/>
+                        </StackPanel>
+                        <StackPanel>
+                            <Button Width="32" Height="32" Margin="5" Style="{StaticResource ButtonCustom}"
+                                     Command="{Binding SelectSideMenuItemCmd}" CommandParameter="{StaticResource SideMenu.Setting.AzureKeys.Header}">
+                                <Path Margin="2" Stretch="Uniform" Data="{StaticResource Geometry.Translate}">
+                                    <Path.Style>
+                                        <Style TargetType="Path" >
+                                            <Setter Property="Fill" Value="{DynamicResource WarningBrush}" />
+                                            <Style.Triggers>
+                                                <DataTrigger Value="true">
+                                                    <DataTrigger.Binding>
+                                                        <MultiBinding Converter="{StaticResource BooleanArr2BooleanConverter}">
+                                                            <Binding Source="{x:Static prop:Settings.Default}" Path="AzureTranslateKey" Converter="{StaticResource String2BooleanConverter}"/>
+                                                            <Binding Source="{x:Static prop:Settings.Default}" Path="AzureTranslateRegion" Converter="{StaticResource String2BooleanConverter}"/>
+                                                        </MultiBinding>
+                                                    </DataTrigger.Binding>
+                                                    <Setter Property="Fill" Value="{DynamicResource PrimaryBrush}"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Path.Style>
+                                </Path>
+                            </Button>
+                            <TextBlock Text="英语翻译"/>
+                        </StackPanel>
+                    </hc:UniformSpacingPanel>
+                </Expander>
+            </StackPanel>
+        </hc:TransitioningContentControl>
+        
 
+        <!--Select the date to edit content for-->
+        <Calendar Visibility="Hidden" Margin="20" HorizontalAlignment="Right" VerticalAlignment="Top"
+                  SelectionMode="SingleDate" 
+                  SelectedDate="{Binding TargetDate}"/>
+
+        <Border BorderThickness="1" Visibility="Hidden"
+                Width="400" Height="400"
+                Background="{DynamicResource RegionBrush}"
+                BorderBrush="{DynamicResource PrimaryBrush}">
+            <Grid>
+                <!--Open or New button-->
+                <StackPanel Grid.Row="1" Grid.Column="1"
+                    VerticalAlignment="Center">
+                    <Button Margin="10" 
+                    Width="160" 
+                    Height="48"
+                    Style="{StaticResource ButtonDashedPrimary}" >
+                        <StackPanel Orientation="Horizontal">
+                            <Path Margin="5,5,20,5" 
+                          Width="30" Height="20" 
+                          Stretch="Uniform" 
+                          Fill="{DynamicResource PrimaryBrush}"                         
+                          Data="{StaticResource CalendarGeometry}"/>
+                            <TextBlock VerticalAlignment="Center"
+                               FontSize="20"
+                               Text="打开" />
+                        </StackPanel>
+                    </Button>
+                    <Button Margin="10" 
+                    Width="160" 
+                    Height="48"
+                    Style="{StaticResource ButtonDashedPrimary}" >
+                        <StackPanel Orientation="Horizontal">
+                            <Path Margin="5,5,20,5" 
+                          Width="30" Height="20" 
+                          Stretch="Uniform" 
+                          Fill="{DynamicResource PrimaryBrush}" 
+                          Data="{StaticResource NewGeometry}"/>
+                            <TextBlock VerticalAlignment="Center"
+                               FontSize="20"
+                               Text="新建" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+
+                <hc:UniformSpacingPanel Margin="20" Spacing="50"
+                                        VerticalAlignment="Bottom" 
+                                        HorizontalAlignment="Center">
+                    <StackPanel>
+                        <Button Height="48" Width="48" Padding="10" 
+                                Style="{StaticResource ButtonIcon}" 
+                                Background="{DynamicResource PrimaryBrush}" 
+                                Foreground="{DynamicResource TextIconBrush}" 
+                                hc:IconElement.Geometry="{StaticResource Geometry.Archive.Storage}" 
+                                hc:BorderElement.CornerRadius="24">
+                        </Button>
+                    </StackPanel>
+                    <StackPanel>
+                        <Button Height="48" Width="48" Padding="10" 
+                                Style="{StaticResource ButtonIcon}" 
+                                Background="{DynamicResource PrimaryBrush}" 
+                                Foreground="{DynamicResource TextIconBrush}" 
+                                hc:IconElement.Geometry="{StaticResource Geometry.Speech.Synthesis}" 
+                                hc:BorderElement.CornerRadius="24"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <Button Height="48" Width="48" Padding="10" 
+                                Style="{StaticResource ButtonIcon}" 
+                                Background="{DynamicResource PrimaryBrush}" 
+                                Foreground="{DynamicResource TextIconBrush}" 
+                                hc:IconElement.Geometry="{StaticResource Geometry.Translate}" 
+                                hc:BorderElement.CornerRadius="24"/>
+                    </StackPanel>
+                </hc:UniformSpacingPanel>
+            </Grid>
+
+        </Border>
         <!--Setting missing message-->
-        <Border BorderThickness="1" 
+        <Border BorderThickness="1" Visibility="Hidden"
                 BorderBrush="{DynamicResource WarningBrush}"
                 Height="350">
             <StackPanel>
@@ -28,11 +220,7 @@
                 <!-- Warning body-->
                 <StackPanel Orientation="Horizontal">
                     <!--Warning Icon-->
-                    <Path Margin="20" Stretch="Uniform"
-                          Height="30" Width="30"
-                          VerticalAlignment="Top"
-                          Fill="{DynamicResource WarningBrush}" 
-                          Data="{StaticResource WarningGeometry}"/>
+
                     
                     <!--Warning mwssage-->
                     <StackPanel HorizontalAlignment="Center"
@@ -151,45 +339,8 @@
             </StackPanel>
         </Border>
             
-        <!--Select the date to edit content for-->
-        <Calendar Grid.Row="1" Grid.Column="0"
-                  Margin="32,32,60,32" 
-                  SelectionMode="SingleDate" 
-                  SelectedDate="{Binding TargetDate}"/>
 
-        <!--Open or New button-->
-        <StackPanel Grid.Row="1" Grid.Column="1"
-                    VerticalAlignment="Center">
-            <Button Margin="10" 
-                    Width="160" 
-                    Height="48"
-                    Style="{StaticResource ButtonDashedPrimary}" >
-                <StackPanel Orientation="Horizontal">
-                    <Path Margin="5,5,20,5" 
-                          Width="30" Height="20" 
-                          Stretch="Uniform" 
-                          Fill="{DynamicResource PrimaryBrush}"                         
-                          Data="{StaticResource CalendarGeometry}"/>
-                    <TextBlock VerticalAlignment="Center"
-                               FontSize="20"
-                               Text="打开" />
-                </StackPanel>
-            </Button>
-            <Button Margin="10" 
-                    Width="160" 
-                    Height="48"
-                    Style="{StaticResource ButtonDashedPrimary}" >
-                <StackPanel Orientation="Horizontal">
-                    <Path Margin="5,5,20,5" 
-                          Width="30" Height="20" 
-                          Stretch="Uniform" 
-                          Fill="{DynamicResource PrimaryBrush}" 
-                          Data="{StaticResource NewGeometry}"/>
-                    <TextBlock VerticalAlignment="Center"
-                               FontSize="20"
-                               Text="新建" />
-                </StackPanel>
-            </Button>
-        </StackPanel>
-    </StackPanel>
+
+
+    </Grid>
 </UserControl>

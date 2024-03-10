@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String x:Key="SideMenu.DailyNews.Header" >每日新闻</sys:String>
+    <sys:String x:Key="SideMenu.AudibleDictionary.Header" >有声词典</sys:String>
+    <sys:String x:Key="SideMenu.Setting.DataStorage.Header" >数据存储</sys:String>
+    <sys:String x:Key="SideMenu.Setting.AzureKeys.Header" >Azure秘钥</sys:String>
+</ResourceDictionary>

@@ -23,15 +23,16 @@
 
         <!--Left navigation area-->
         <hc:TransitioningContentControl Grid.Column="0">
-            <hc:SideMenu Margin="1">
+            <hc:SideMenu Margin="1" AutoSelect="False" ExpandMode="ShowAll">
                 <!-- Edit area-->
-                <hc:SideMenuItem Header="编辑">
+                <hc:SideMenuItem Header="编辑" IsSelected="{Binding IsEditAreaSelected, Mode=TwoWay}">
                     <hc:SideMenuItem.Icon>
                         <Image Source="{StaticResource Icon.Navigator.Edit}" Width="30" Height="30"/>
                     </hc:SideMenuItem.Icon>
 
                     <!--Daily News Edit area-->
-                    <hc:SideMenuItem Header="每日新闻" 
+                    <hc:SideMenuItem Header="{StaticResource SideMenu.DailyNews.Header}" 
+                                     IsSelected="{Binding IsDailyNewsSelected, Mode=TwoWay}"
                                      Command="{Binding SelectSideMenuItemCmd}" CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
                         <hc:SideMenuItem.Icon>
                             <Image Source="{StaticResource Icon.Navigator.Daily.News}" Width="16" Height="16"/>
@@ -39,7 +40,8 @@
                     </hc:SideMenuItem>
 
                     <!--Audible Dictionary Edit area-->
-                    <hc:SideMenuItem Header="有声词典" 
+                    <hc:SideMenuItem Header="{StaticResource SideMenu.AudibleDictionary.Header}" 
+                                     IsSelected="{Binding IsAudibleDictionarySelected, Mode=TwoWay}"
                                      Command="{Binding SelectSideMenuItemCmd}" CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
                         <hc:SideMenuItem.Icon>
                             <Image Source="{StaticResource Icon.Navigator.Audible.Dictionary}"  Width="16" Height="16"/>
@@ -48,13 +50,14 @@
                 </hc:SideMenuItem>
 
                 <!--Settings-->
-                <hc:SideMenuItem Header="设置">
+                <hc:SideMenuItem Header="设置" IsSelected="{Binding IsSettingAreaSelected, Mode=TwoWay}">
                     <hc:SideMenuItem.Icon>
                         <Image Source="{StaticResource Icon.Navigator.Settings}" Width="30" Height="30"/>
                     </hc:SideMenuItem.Icon>
 
                     <!--Azure TTS Settings-->
-                    <hc:SideMenuItem Header="Azure密钥设置" 
+                    <hc:SideMenuItem Header="{StaticResource SideMenu.Setting.AzureKeys.Header}" 
+                                     IsSelected="{Binding IsAzureSettingSelected, Mode=TwoWay}"
                                      Command="{Binding SelectSideMenuItemCmd}" CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
                         <hc:SideMenuItem.Icon>
                             <Image Source="{StaticResource Icon.Navigator.Settings.Azure.keys}" Width="16" Height="16"/>
@@ -62,7 +65,8 @@
                     </hc:SideMenuItem>
 
                     <!--Data Storage Settings-->
-                    <hc:SideMenuItem Header="数据存储设置" 
+                    <hc:SideMenuItem Header="{StaticResource SideMenu.Setting.DataStorage.Header}"
+                                     IsSelected="{Binding IsStorageSettingSelected, Mode=TwoWay}"
                                      Command="{Binding SelectSideMenuItemCmd}" CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
                         <hc:SideMenuItem.Icon>
                             <Image Source="{StaticResource Icon.Navigator.Settings.Storage}" Width="16" Height="16"/>
@@ -74,11 +78,11 @@
 
         <!--Right content area-->
         <Border Grid.Column="1" Background="{DynamicResource MainContentForegroundDrawingBrush}">
-            <Grid Margin="16">
-                <edit:DailyNewsPage Visibility="{Binding Path=DataContext.IsDailyNewsItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                <edit:AudibleDictionaryPage Visibility="{Binding Path=DataContext.IsAudibleDictionaryItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                <setting:AzureSettingPage Visibility="{Binding Path=DataContext.IsAzureSettingItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                <setting:StorageSettingPage Visibility="{Binding Path=DataContext.IsStorageSettingItemVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            <Grid>
+                <edit:DailyNewsPage Visibility="{Binding Path=DataContext.IsDailyNewsSelected, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                <edit:AudibleDictionaryPage Visibility="{Binding Path=DataContext.IsAudibleDictionarySelected, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                <setting:AzureSettingPage Visibility="{Binding Path=DataContext.IsAzureSettingSelected, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                <setting:StorageSettingPage Visibility="{Binding Path=DataContext.IsStorageSettingSelected, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
             </Grid>
         </Border>
    

@@ -1,23 +1,15 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using HandyControl.Controls;
 using HandyControl.Tools.Extension;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace WalkmanEditor.ViewModels.Edit.DailyNews
 {
-    public class DailyNewsIntroPageViewModel : ObservableRecipient
+    public class DailyNewsIntroPageViewModel(IMessenger messenger) : ObservableRecipient
     {
-        /// <summary>
-        /// Indicate whether Daily News repository configured
-        /// </summary>
-        public static bool IsDailyNewsRepositoryNotConfigured
-        {
-            get
-            {
-                return Properties.Settings.Default.DailyNewsPublishRepository.IsNullOrEmpty() ||
-                       Properties.Settings.Default.DailyNewsArchiveRepository.IsNullOrEmpty();
-            } 
-        }
-
         /// <summary>
         /// Choose the date to edit content for
         /// </summary>
@@ -31,6 +23,22 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
             }
         }
 
-        private DateTime m_targetDate;
+        /// <summary>
+        /// Jump to the specified SideMenu item.
+        /// </summary>
+        public RelayCommand<string> SelectSideMenuItemCmd
+        {
+            get
+            {
+                return m_selectSideMenuItemCmd ??= new RelayCommand<string>(header =>
+                {
+                    m_messsager.Send(header, MessageTokens.SelectSideMenuItem);
+                });
+            }
+        }
+
+        private DateTime             m_targetDate;
+        private RelayCommand<string> m_selectSideMenuItemCmd;
+        private readonly IMessenger  m_messsager = messenger;
     }
 }
