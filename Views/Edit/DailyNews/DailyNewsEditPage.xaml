@@ -1,17 +1,14 @@
-﻿<UserControl x:Class="WalkmanEditor.Views.Edit.DailyNewsPage"
+﻿<UserControl x:Class="WalkmanEditor.Views.Edit.DailyNews.DailyNewsEditPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:hc="https://handyorg.github.io/handycontrol" 
-             xmlns:dailynews="clr-namespace:WalkmanEditor.Views.Edit.DailyNews"
+             xmlns:local="clr-namespace:WalkmanEditor.Views.Edit.DailyNews"
              mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="1620"
-             DataContext="{Binding Source={StaticResource Locator}, Path=DailyNewsPageViewModel}">
-    <Grid Margin="10" Name="DailyNewsPanelMain">
-        <dailynews:DailyNewsIntroPage/>
-
-        <!--<Grid>
+             d:DesignHeight="450" d:DesignWidth="800"
+             DataContext="{Binding Source={StaticResource Locator}, Path=DailyNewsEditPageViewModel}">
+    <Grid Name="DailyNewsPanelMain">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -24,7 +21,8 @@
             </Grid.ColumnDefinitions>
 
             <hc:StepBar Grid.ColumnSpan="2"
-             ItemsSource="{Binding StepBarDataList}">
+                        ItemsSource="{Binding StepBarDataList}"
+                        StepIndex="{Binding StepIndex, Mode=TwoWay}">
                 <hc:StepBar.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
@@ -62,6 +60,5 @@
                     </TabItem>
                 </TabControl>
             </hc:TransitioningContentControl>
-        </Grid>-->
-    </Grid>
+        </Grid>
 </UserControl>

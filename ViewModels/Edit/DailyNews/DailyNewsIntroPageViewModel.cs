@@ -1,10 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
-using HandyControl.Controls;
-using HandyControl.Tools.Extension;
-using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace WalkmanEditor.ViewModels.Edit.DailyNews
 {
@@ -37,7 +33,22 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
             }
         }
 
+        /// <summary>
+        /// Create a news article
+        /// </summary>
+        public RelayCommand CreateNewsCmd
+        {
+            get
+            {
+                return m_createCmd ??= new RelayCommand(() =>
+                {
+                    m_messsager.Send(string.Empty, MessageTokens.DailyNewsCreateNewsCmd);
+                });
+            }
+        }
+
         private DateTime             m_targetDate = DateTime.Now;
+        private RelayCommand         m_createCmd;
         private RelayCommand<string> m_selectSideMenuItemCmd;
         private readonly IMessenger  m_messsager = messenger;
     }

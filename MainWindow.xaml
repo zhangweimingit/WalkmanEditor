@@ -6,6 +6,7 @@
         xmlns:hc="https://handyorg.github.io/handycontrol"
         xmlns:local="clr-namespace:WalkmanEditor" 
         xmlns:edit="clr-namespace:WalkmanEditor.Views.Edit" 
+        xmlns:dailyNews="clr-namespace:WalkmanEditor.Views.Edit.DailyNews" 
         xmlns:setting="clr-namespace:WalkmanEditor.Views.Setting"
         mc:Ignorable="d"
         WindowState="Maximized"
@@ -79,7 +80,7 @@
         <!--Right content area-->
         <Border Grid.Column="1" Background="{DynamicResource MainContentForegroundDrawingBrush}">
             <Grid>
-                <edit:DailyNewsPage Visibility="{Binding Path=DataContext.IsDailyNewsSelected, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                <dailyNews:DailyNewsPage Visibility="{Binding Path=DataContext.IsDailyNewsSelected, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                 <edit:AudibleDictionaryPage Visibility="{Binding Path=DataContext.IsAudibleDictionarySelected, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                 <setting:AzureSettingPage Visibility="{Binding Path=DataContext.IsAzureSettingSelected, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                 <setting:StorageSettingPage Visibility="{Binding Path=DataContext.IsStorageSettingSelected, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
