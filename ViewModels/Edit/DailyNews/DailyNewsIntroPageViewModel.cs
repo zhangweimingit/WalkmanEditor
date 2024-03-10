@@ -37,7 +37,7 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
             }
         }
 
-        private DateTime             m_targetDate;
+        private DateTime             m_targetDate = DateTime.Now;
         private RelayCommand<string> m_selectSideMenuItemCmd;
         private readonly IMessenger  m_messsager = messenger;
     }
