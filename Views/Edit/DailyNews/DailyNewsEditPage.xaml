@@ -39,26 +39,16 @@
             </StackPanel>
 
             <hc:TransitioningContentControl Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center">
-                <TabControl Style="{StaticResource TabControlInLine}">
-                    <TabItem Header="选择编辑日期">
-                        <Grid Width="1000" Height="500">
-                            <hc:DatePicker Width="200" Height="60" Margin="0,0,0,32" SelectedDate="2019-10-28" hc:InfoElement.Placeholder="EnterContent" hc:InfoElement.Title="Must be filled in" hc:InfoElement.Necessary="True"/>
-                        </Grid>
-                    </TabItem>
-                    <TabItem Header="输入英文文本">
-                        <hc:TextBox Width="1000" Height="500" Padding="20"
-                         TextWrapping="Wrap" AcceptsReturn="True"
-                         FontSize="16" Foreground="{StaticResource SecondaryTextBrush}"
-                         VerticalContentAlignment="Top"
-                         Text="{Binding FirstStepEnglishPlainText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                    </TabItem>
-                    <TabItem Header="生成中文翻译">
-
-                    </TabItem>
-                    <TabItem Header="Small">
-
-                    </TabItem>
-                </TabControl>
+            <TabControl Style="{StaticResource TabControlInLine}">
+                <TabItem Header="输入英文文本"
+                         IsHitTestVisible="False"
+                         IsSelected="{Binding IsTextInputPageSelected, Mode=TwoWay}">
+                    <local:DailyNewsEditTextInput/>
+                </TabItem>
+                <TabItem Header="生成中文翻译"
+                         IsHitTestVisible="False">
+                </TabItem>
+            </TabControl>
             </hc:TransitioningContentControl>
         </Grid>
 </UserControl>
