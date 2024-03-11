@@ -102,7 +102,7 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
             switch (StepIndex)
             {
                 case 0: // First step: Get input english plain text
-                    return !m_dailyNewsEditTextInputViewModel.EnglishPlainText.IsNullOrEmpty();
+                    return !m_dailyNewsEditTextInputViewModel.NewsContent.IsNullOrEmpty();
                 default:
                     return false;
             }
@@ -124,7 +124,7 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
         {
             switch (e.PropertyName)
             {
-                case nameof(DailyNewsEditTextInputViewModel.EnglishPlainText):
+                case nameof(DailyNewsEditTextInputViewModel.NewsContent):
                 {
                     NextStepCmd.NotifyCanExecuteChanged();
                     break;
