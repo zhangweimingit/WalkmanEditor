@@ -13,8 +13,7 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
     {
         public DailyNewsEditPageViewModel()
         {
-            m_dailyNewsEditTextInputViewModel = ViewModelLocator.DailyNewsEditTextInputViewModel;
-            m_dailyNewsEditTextInputViewModel.PropertyChanged += HandleSubPagePropertyChanged;
+            ViewModelLocator.DailyNewsEditTextInputViewModel.PropertyChanged += HandleSubPagePropertyChanged;
         }
 
         #region Stepbar
@@ -74,7 +73,7 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
             switch (StepIndex)
             {
                 case 0: // First step: Get input english plain text
-                    return m_dailyNewsEditTextInputViewModel.IsNewsInputCompleted;
+                    return ViewModelLocator.DailyNewsEditTextInputViewModel.IsNewsInputCompleted;
                 default:
                     return false;
             }
@@ -98,6 +97,5 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
         private EditStepsEnum                   m_stepIndex = EditStepsEnum.TextInput;
         private RelayCommand<Panel>             m_nextStepCmd;
         private RelayCommand<Panel>             m_prevStepCmd;
-        private DailyNewsEditTextInputViewModel m_dailyNewsEditTextInputViewModel;
     }
 }
