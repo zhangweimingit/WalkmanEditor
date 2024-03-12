@@ -27,6 +27,9 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
             Translate = 1,
         }
 
+        /// <summary>
+        /// The current step, start from 0
+        /// </summary>
         public EditStepsEnum StepIndex
         {
             get => m_stepIndex;
