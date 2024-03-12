@@ -68,11 +68,14 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
         }
         #endregion
 
+        /// <summary>
+        /// Can the next step be executed
+        /// </summary>
         private bool CanNextStepCmdExecute()
         {
             switch (StepIndex)
             {
-                case 0: // First step: Get input english plain text
+                case EditStepsEnum.TextInput: 
                     return ViewModelLocator.DailyNewsEditTextInputViewModel.IsNewsInputCompleted;
                 default:
                     return false;
