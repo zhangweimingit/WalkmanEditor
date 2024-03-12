@@ -48,7 +48,6 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
                 {
                     var stepBar = mainPanel.Children.OfType<StepBar>().FirstOrDefault();
                     stepBar.Next();
-                    SwitchSubPage();
                     NextStepCmd.NotifyCanExecuteChanged();
                 }, canExecute: p => CanNextStepCmdExecute());
             }
@@ -70,17 +69,6 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
         }
         #endregion
 
-        public bool IsTextInputPageSelected
-        {
-            get => m_isTextInputPageSelected;
-            set
-            {
-                m_isTextInputPageSelected = value;
-                OnPropertyChanged(nameof(IsTextInputPageSelected));
-            }
-        }
-
-
         private bool CanNextStepCmdExecute()
         {
             switch (StepIndex)
@@ -89,21 +77,6 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
                     return m_dailyNewsEditTextInputViewModel.IsNewsInputCompleted;
                 default:
                     return false;
-            }
-        }
-
-        /// <summary>
-        /// Switch subpages according to the current step
-        /// </summary>
-        private void SwitchSubPage()
-        {
-            switch(StepIndex)
-            {
-                case EditStepsEnum.TextInput:
-                    {
-                        IsTextInputPageSelected = true;
-                        break;
-                    }
             }
         }
 
@@ -122,7 +95,6 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
             }
         }
 
-        private bool                            m_isTextInputPageSelected = true;
         private EditStepsEnum                   m_stepIndex = EditStepsEnum.TextInput;
         private RelayCommand<Panel>             m_nextStepCmd;
         private RelayCommand<Panel>             m_prevStepCmd;
