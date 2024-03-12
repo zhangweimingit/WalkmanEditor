@@ -5,33 +5,31 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:hc="https://handyorg.github.io/handycontrol" 
              xmlns:local="clr-namespace:WalkmanEditor.Views.Edit.DailyNews"
+             xmlns:localvm="clr-namespace:WalkmanEditor.ViewModels.Edit.DailyNews"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              DataContext="{Binding Source={StaticResource Locator}, Path=DailyNewsEditPageViewModel}">
     <Grid Name="DailyNewsPanelMain">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
-            <hc:StepBar Grid.ColumnSpan="2"
-                        ItemsSource="{Binding StepBarDataList}"
+        <hc:StepBar Grid.ColumnSpan="2"
+                        ItemsSource="{Binding Source={hc:EnumBindingSource {x:Type localvm:DailyNewsEditPageViewModel+EditStepsEnum}}}"
                         StepIndex="{Binding StepIndex, Mode=TwoWay}">
-                <hc:StepBar.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel>
-                            <TextBlock Text="{Binding Name}" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left"/>
-                            <TextBlock Margin="0,4,0,0" Text="{Binding Remark}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </hc:StepBar.ItemTemplate>
-            </hc:StepBar>
+            <hc:StepBar.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" FontSize="14" />
+                </DataTemplate>
+            </hc:StepBar.ItemTemplate>
+        </hc:StepBar>
 
             <StackPanel Margin="10" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center">
                 <Button CommandParameter="{Binding ElementName=DailyNewsPanelMain}" Command="{Binding PrevStepCmd}" Width="180" Content="上一步" Style="{StaticResource ButtonPrimary}"/>
