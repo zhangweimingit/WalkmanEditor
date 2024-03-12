@@ -37,10 +37,10 @@
             </StackPanel>
 
             <hc:TransitioningContentControl Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center">
-            <TabControl Style="{StaticResource TabControlInLine}">
+            <TabControl Style="{StaticResource TabControlInLine}" 
+                        SelectedIndex="{Binding StepIndex, Mode=OneWay}">
                 <TabItem Header="输入英文文本"
-                         IsHitTestVisible="False"
-                         IsSelected="{Binding IsTextInputPageSelected, Mode=TwoWay}">
+                         IsHitTestVisible="False">
                     <local:DailyNewsEditTextInput/>
                 </TabItem>
                 <TabItem Header="生成中文翻译"
