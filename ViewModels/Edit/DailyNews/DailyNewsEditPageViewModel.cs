@@ -13,6 +13,7 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
     {
         public DailyNewsEditPageViewModel()
         {
+            PropertyChanged += HandleSubPagePropertyChanged;
             ViewModelLocator.DailyNewsEditTextInputViewModel.PropertyChanged += HandleSubPagePropertyChanged;
         }
 
@@ -47,7 +48,6 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
                 {
                     var stepBar = mainPanel.Children.OfType<StepBar>().FirstOrDefault();
                     stepBar.Next();
-                    NextStepCmd.NotifyCanExecuteChanged();
                 }, canExecute: p => CanNextStepCmdExecute());
             }
         }
@@ -86,11 +86,12 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
         {
             switch (e.PropertyName)
             {
+                case nameof(DailyNewsEditPageViewModel.StepIndex):
                 case nameof(DailyNewsEditTextInputViewModel.IsNewsInputCompleted):
-                {
-                    NextStepCmd.NotifyCanExecuteChanged();
-                    break;
-                }
+                    {
+                        NextStepCmd.NotifyCanExecuteChanged();
+                        break;
+                    }
             }
         }
 
