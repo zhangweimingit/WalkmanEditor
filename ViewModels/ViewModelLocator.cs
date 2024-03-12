@@ -25,8 +25,9 @@ namespace WalkmanEditor.ViewModels
                 .AddSingleton<StorageSettingPageViewModel>()
                 .AddSingleton<DailyNewsPageViewModel>()
                 .AddSingleton<DailyNewsIntroPageViewModel>()
-                .AddSingleton<DailyNewsEditPageViewModel>()
+                .AddSingleton<DailyNewsTranslatePageViewModel>()
                 .AddSingleton<DailyNewsEditTextInputViewModel>()
+                .AddSingleton<DailyNewsEditPageViewModel>()
                 .AddSingleton<AudibleDictionaryPageViewModel>()
                 .AddSingleton<MainWindowViewModel>()
                 .BuildServiceProvider()); ;
@@ -49,6 +50,8 @@ namespace WalkmanEditor.ViewModels
         public static DailyNewsEditPageViewModel DailyNewsEditPageViewModel => Ioc.Default.GetService<DailyNewsEditPageViewModel>();
 
         public static DailyNewsEditTextInputViewModel DailyNewsEditTextInputViewModel => Ioc.Default.GetService<DailyNewsEditTextInputViewModel>();
+
+        public static DailyNewsTranslatePageViewModel DailyNewsTranslatePageViewModel => Ioc.Default.GetService<DailyNewsTranslatePageViewModel>();
 
         #endregion
     }

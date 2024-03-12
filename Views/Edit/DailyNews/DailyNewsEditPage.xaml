@@ -41,11 +41,11 @@
                         SelectedIndex="{Binding StepIndex, Mode=OneWay, Converter={StaticResource Enum2IntConverter}}">
                 <TabItem Header="输入英文文本"
                          IsHitTestVisible="False">
-                    <local:DailyNewsEditTextInput/>
+                    <local:DailyNewsEditTextInput Width="1200" Height="800"/>
                 </TabItem>
                 <TabItem Header="生成中文翻译"
                          IsHitTestVisible="False">
-                    <TextBlock Text="5"/>
+                    <local:DailyNewsTranslatePage Width="1200" Height="800"/>
                 </TabItem>
             </TabControl>
             </hc:TransitioningContentControl>
