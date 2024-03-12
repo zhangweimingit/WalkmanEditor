@@ -58,13 +58,14 @@
             </DrawingBrush>
 
             <!--Converters-->
-            <converters:BooleanToVisibilityConverter  x:Key="BooleanToVisibilityConverter" />
-            <converters:BooleanToVisibilityConverter  x:Key="BooleanToVisibilityReConverter" VisibilityOfTrue="Hidden" VisibilityOfFalse="Visible"/>
-            <converters:String2BooleanReConverter  x:Key="String2BooleanReConverter"/>
-            <converters:String2BooleanConverter  x:Key="String2BooleanConverter"/>
+            <BooleanToVisibilityConverter  x:Key="BooleanToVisibilityConverter" />
+            <hc:Boolean2VisibilityReConverter  x:Key="BooleanToVisibilityReConverter"/>
             <hc:String2VisibilityConverter x:Key="String2VisibilityConverter"/>
             <hc:String2VisibilityReConverter x:Key="String2VisibilityReConverter"/>
             <hc:BooleanArr2BooleanConverter x:Key="BooleanArr2BooleanConverter"/>
+            <converters:String2BooleanReConverter  x:Key="String2BooleanReConverter"/>
+            <converters:String2BooleanConverter  x:Key="String2BooleanConverter"/>
+            <converters:Enum2IntConverter x:Key="Enum2IntConverter"/>
 
             <!--ViewModel resource-->
             <viewmodels:ViewModelLocator x:Key="Locator"/>

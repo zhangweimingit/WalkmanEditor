@@ -22,8 +22,8 @@
         </Grid.ColumnDefinitions>
 
         <hc:StepBar Grid.ColumnSpan="2"
-                        ItemsSource="{Binding Source={hc:EnumBindingSource {x:Type localvm:DailyNewsEditPageViewModel+EditStepsEnum}}}"
-                        StepIndex="{Binding StepIndex, Mode=TwoWay}">
+                    ItemsSource="{Binding Source={hc:EnumBindingSource {x:Type localvm:DailyNewsEditPageViewModel+EditStepsEnum}}}"
+                    StepIndex="{Binding StepIndex, Mode=TwoWay}">
             <hc:StepBar.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding}" FontSize="14" />
@@ -31,20 +31,21 @@
             </hc:StepBar.ItemTemplate>
         </hc:StepBar>
 
-            <StackPanel Margin="10" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center">
-                <Button CommandParameter="{Binding ElementName=DailyNewsPanelMain}" Command="{Binding PrevStepCmd}" Width="180" Content="上一步" Style="{StaticResource ButtonPrimary}"/>
-                <Button CommandParameter="{Binding ElementName=DailyNewsPanelMain}" Command="{Binding NextStepCmd}" Width="180" Margin="0,16,0,0" Content="下一步" Style="{StaticResource ButtonPrimary}"/>
-            </StackPanel>
+        <StackPanel Margin="10" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+            <Button CommandParameter="{Binding ElementName=DailyNewsPanelMain}" Command="{Binding PrevStepCmd}" Width="180" Content="上一步" Style="{StaticResource ButtonPrimary}"/>
+            <Button CommandParameter="{Binding ElementName=DailyNewsPanelMain}" Command="{Binding NextStepCmd}" Width="180" Margin="0,16,0,0" Content="下一步" Style="{StaticResource ButtonPrimary}"/>
+        </StackPanel>
 
-            <hc:TransitioningContentControl Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+        <hc:TransitioningContentControl Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center">
             <TabControl Style="{StaticResource TabControlInLine}" 
-                        SelectedIndex="{Binding StepIndex, Mode=OneWay}">
+                        SelectedIndex="{Binding StepIndex, Mode=OneWay, Converter={StaticResource Enum2IntConverter}}">
                 <TabItem Header="输入英文文本"
                          IsHitTestVisible="False">
                     <local:DailyNewsEditTextInput/>
                 </TabItem>
                 <TabItem Header="生成中文翻译"
                          IsHitTestVisible="False">
+                    <TextBlock Text="5"/>
                 </TabItem>
             </TabControl>
             </hc:TransitioningContentControl>

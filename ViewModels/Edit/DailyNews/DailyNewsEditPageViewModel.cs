@@ -2,8 +2,6 @@
 using CommunityToolkit.Mvvm.Input;
 using HandyControl.Controls;
 using HandyControl.Tools.Converter;
-using HandyControl.Tools.Extension;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Controls;
 
@@ -17,7 +15,6 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
             ViewModelLocator.DailyNewsEditTextInputViewModel.PropertyChanged += HandleSubPagePropertyChanged;
         }
 
-        #region Stepbar
         [TypeConverter(typeof(EnumDescriptionTypeConverter))]
         public enum EditStepsEnum
         {
@@ -69,8 +66,7 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
                 });
             }
         }
-        #endregion
-
+  
         /// <summary>
         /// Can the next step be executed
         /// </summary>
