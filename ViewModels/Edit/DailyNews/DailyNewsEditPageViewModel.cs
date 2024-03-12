@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using HandyControl.Controls;
+using HandyControl.Tools.Converter;
 using HandyControl.Tools.Extension;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -17,31 +18,13 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
         }
 
         #region Stepbar
-        public class StepBarDataModel
+        [TypeConverter(typeof(EnumDescriptionTypeConverter))]
+        public enum EditStepsEnum
         {
-            public string Name { get; set; }
-            public string Remark { get; set; }
-            public bool IsComplete { get; set; }
-        }
-
-        public static ObservableCollection<StepBarDataModel> StepBarDataList
-        {
-            get
-            {
-                return
-                [
-                    new()
-                    {
-                        Name = "第一步",
-                        Remark = "输入英文文本"
-                    },
-                    new()
-                    {
-                        Name = "第二步",
-                        Remark = "生成中文翻译"
-                    }
-                ];
-            }
+            [Description("输入英文文本")]
+            TextInput,
+            [Description("生成中文翻译")]
+            Translate,
         }
 
         public int StepIndex
