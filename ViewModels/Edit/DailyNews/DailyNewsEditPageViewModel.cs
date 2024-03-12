@@ -14,7 +14,7 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
         public DailyNewsEditPageViewModel()
         {
             m_dailyNewsEditTextInputViewModel = ViewModelLocator.DailyNewsEditTextInputViewModel;
-            m_dailyNewsEditTextInputViewModel.PropertyChanged += HandleTextInputPropertyChanged;
+            m_dailyNewsEditTextInputViewModel.PropertyChanged += HandleSubPagePropertyChanged;
         }
 
         #region Stepbar
@@ -48,7 +48,7 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
                 {
                     var stepBar = mainPanel.Children.OfType<StepBar>().FirstOrDefault();
                     stepBar.Next();
-                    SwitchTabControl();
+                    SwitchSubPage();
                     NextStepCmd.NotifyCanExecuteChanged();
                 }, canExecute: p => CanNextStepCmdExecute());
             }
@@ -92,11 +92,14 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
             }
         }
 
-        private void SwitchTabControl()
+        /// <summary>
+        /// Switch subpages according to the current step
+        /// </summary>
+        private void SwitchSubPage()
         {
             switch(StepIndex)
             {
-                case 0:
+                case EditStepsEnum.TextInput:
                     {
                         IsTextInputPageSelected = true;
                         break;
@@ -104,7 +107,10 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
             }
         }
 
-        private void HandleTextInputPropertyChanged(object sender, PropertyChangedEventArgs e)
+        /// <summary>
+        /// Monitor subpage property changes
+        /// </summary>
+        private void HandleSubPagePropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             switch (e.PropertyName)
             {
