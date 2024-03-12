@@ -22,12 +22,12 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
         public enum EditStepsEnum
         {
             [Description("输入英文文本")]
-            TextInput,
+            TextInput = 0,
             [Description("生成中文翻译")]
-            Translate,
+            Translate = 1,
         }
 
-        public int StepIndex
+        public EditStepsEnum StepIndex
         {
             get => m_stepIndex;
             set
@@ -117,7 +117,7 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
         }
 
         private bool                            m_isTextInputPageSelected = true;
-        private int                             m_stepIndex = 0;
+        private EditStepsEnum                   m_stepIndex = EditStepsEnum.TextInput;
         private RelayCommand<Panel>             m_nextStepCmd;
         private RelayCommand<Panel>             m_prevStepCmd;
         private DailyNewsEditTextInputViewModel m_dailyNewsEditTextInputViewModel;
