@@ -65,6 +65,20 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
             }
         }
 
+        /// <summary>
+        /// Collection of news sources
+        /// </summary>
+        public static ObservableCollection<string> NewsSourceDataList
+        {
+            get
+            {
+                return [
+                "VOA",   //Voice of America English News
+                "BBC",   //British Broadcasting Corporation
+                "CGTN"]; //China Global Television Network
+            }
+        }
+
         private string m_newsTitle;
         private string m_newsContent;
         private string m_newsSource;
