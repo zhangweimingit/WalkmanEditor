@@ -28,23 +28,13 @@
                         Foreground="{StaticResource SecondaryTextBrush}"
                         Text="{Binding NewsContent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-            <StackPanel Margin="32">
-                <TextBlock Text="请选择新闻来源"
-                           FontSize="16"
-                           Foreground="{StaticResource SecondaryTextBrush}"/>
-                <UniformGrid Rows="1" Columns="3">
-                    <RadioButton Margin="3" Content="VOA" 
-                                 IsChecked="True" 
-                                 Background="{DynamicResource PrimaryBrush}" 
-                                 Foreground="{DynamicResource PrimaryTextBrush}"/>
-                    <RadioButton Margin="3" Content="CGTN" 
-                                 Background="{DynamicResource PrimaryBrush}" 
-                                 Foreground="{DynamicResource PrimaryTextBrush}"/>
-                    <RadioButton Margin="3" Content="BBC" 
-                                 Background="{DynamicResource PrimaryBrush}" 
-                                 Foreground="{DynamicResource PrimaryTextBrush}"/>
-                </UniformGrid>
-            </StackPanel>
+            <ComboBox Margin="32" Width="1000" FontSize="16"
+                      hc:InfoElement.Placeholder="新闻来源" 
+                      hc:InfoElement.Title="请选择新闻来源" 
+                      Style="{StaticResource ComboBoxExtend}" 
+                      Foreground="{StaticResource SecondaryTextBrush}"
+                      hc:InfoElement.Necessary="True" hc:InfoElement.Symbol="*" 
+                      ItemsSource="{Binding NewsSourceDataList}" SelectedValue="{Binding NewsSource}"/>
         </StackPanel>
     </Grid>
 </UserControl>
