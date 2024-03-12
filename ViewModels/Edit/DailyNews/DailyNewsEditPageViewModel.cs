@@ -24,23 +24,24 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
             public bool IsComplete { get; set; }
         }
 
-        public ObservableCollection<StepBarDataModel> StepBarDataList => GetStepBarDataList();
-
-        private ObservableCollection<StepBarDataModel> GetStepBarDataList()
+        public static ObservableCollection<StepBarDataModel> StepBarDataList
         {
-            return
-            [
-                new()
-                {
-                    Name = "第一步",
-                    Remark = "输入英文文本"
-                },
-                new()
-                {
-                    Name = "第二步",
-                    Remark = "生成中文翻译"
-                }
-            ];
+            get
+            {
+                return
+                [
+                    new()
+                    {
+                        Name = "第一步",
+                        Remark = "输入英文文本"
+                    },
+                    new()
+                    {
+                        Name = "第二步",
+                        Remark = "生成中文翻译"
+                    }
+                ];
+            }
         }
 
         public int StepIndex
