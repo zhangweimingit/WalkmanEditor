@@ -35,17 +35,66 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
             private string m_chinese;
         }
 
-        public ObservableCollection<TranslateDataModel> TranslateCollection 
+        /// <summary>
+        /// Receive data passed in from the previous step
+        /// </summary>
+        public void HandlePreStepData(string title, string content)
         {
-            get => m_translateCollection;
+            HandlePreStepTitleData(title);
+            HandlePreStepContentData(content);
+        }
+
+        /// <summary>
+        /// Handle the title of the news
+        /// </summary>
+        private void HandlePreStepTitleData(string title)
+        {
+            if (TitleDataList == null || TitleDataList.First().English != title)
+                TitleDataList = [new TranslateDataModel() { English = title, Chinese = "" }];
+        }
+
+        /// <summary>
+        /// Handle the content of the news
+        /// </summary>
+        private void HandlePreStepContentData(string content)
+        {
+            string[] sentences = Regex.Split(content, @"(?<=[\.!\?])\s+");
+            ContentDataList = new ObservableCollection<TranslateDataModel>(
+                sentences.Select(
+                    sentence => new TranslateDataModel()
+                    {
+                        English = sentence,
+                        Chinese = ContentDataList?.Where(item => item.English == sentence).FirstOrDefault()?.Chinese
+                    }));
+        }
+
+        /// <summary>
+        /// Data list of the title of the news
+        /// </summary>
+        public ObservableCollection<TranslateDataModel> TitleDataList 
+        {
+            get => m_titleDataList;
             set
             {
-                m_translateCollection = value;
-                OnPropertyChanged(nameof(TranslateCollection));
+                m_titleDataList = value;
+                OnPropertyChanged(nameof(TitleDataList));
             }
         }
 
+        /// <summary>
+        /// Data list of the content of the news
+        /// </summary>
+        public ObservableCollection<TranslateDataModel> ContentDataList
+        {
+            get => m_contentDataList;
+            set
+            {
+                m_contentDataList = value;
+                OnPropertyChanged(nameof(ContentDataList));
+            }
+        }
 
-        private ObservableCollection<TranslateDataModel> m_translateCollection;
+        private ObservableCollection<TranslateDataModel> m_titleDataList;
+        private ObservableCollection<TranslateDataModel> m_contentDataList;
     }
 }
