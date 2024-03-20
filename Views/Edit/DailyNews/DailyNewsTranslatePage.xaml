@@ -8,11 +8,25 @@
              d:DesignHeight="800" d:DesignWidth="1600"
              DataContext="{Binding Source={StaticResource Locator}, Path=DailyNewsTranslatePageViewModel}">
     <Grid>
-        <ListView ItemsSource="{Binding DataList}">
+        <ListView ItemsSource="{Binding ContentDataList}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="600" Header="英文" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Width="600" Header="中文" DisplayMemberBinding="{Binding Remark}"/>
+                    <GridViewColumn Width="600" Header="英文">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding English}" 
+                                           TextWrapping="Wrap"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="600" Header="中文" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Chinese}" 
+                                           TextWrapping="Wrap"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Width="200" Header="翻译">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
