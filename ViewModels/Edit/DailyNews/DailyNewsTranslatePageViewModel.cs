@@ -9,7 +9,7 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
 {
     public class DailyNewsTranslatePageViewModel : ObservableRecipient
     {
-        public class TranslateDataModel : ObservableRecipient
+        public class Sentence : ObservableRecipient
         {
             public string English 
             { 
@@ -49,8 +49,7 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
         /// </summary>
         private void HandlePreStepTitleData(string title)
         {
-            if (TitleDataList == null || TitleDataList.First().English != title)
-                TitleDataList = [new TranslateDataModel() { English = title, Chinese = "" }];
+            TitleDataList = [new Sentence() { English = title, Chinese = TitleDataList?.FirstOrDefault()?.Chinese }];
         }
 
         /// <summary>
@@ -59,9 +58,9 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
         private void HandlePreStepContentData(string content)
         {
             string[] sentences = Regex.Split(content, @"(?<=[\.!\?])\s+");
-            ContentDataList = new ObservableCollection<TranslateDataModel>(
+            ContentDataList = new ObservableCollection<Sentence>(
                 sentences.Select(
-                    sentence => new TranslateDataModel()
+                    sentence => new Sentence()
                     {
                         English = sentence,
                         Chinese = ContentDataList?.Where(item => item.English == sentence).FirstOrDefault()?.Chinese
@@ -71,7 +70,7 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
         /// <summary>
         /// Data list of the title of the news
         /// </summary>
-        public ObservableCollection<TranslateDataModel> TitleDataList 
+        public ObservableCollection<Sentence> TitleDataList 
         {
             get => m_titleDataList;
             set
@@ -84,7 +83,7 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
         /// <summary>
         /// Data list of the content of the news
         /// </summary>
-        public ObservableCollection<TranslateDataModel> ContentDataList
+        public ObservableCollection<Sentence> ContentDataList
         {
             get => m_contentDataList;
             set
@@ -94,7 +93,7 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
             }
         }
 
-        private ObservableCollection<TranslateDataModel> m_titleDataList;
-        private ObservableCollection<TranslateDataModel> m_contentDataList;
+        private ObservableCollection<Sentence> m_titleDataList;
+        private ObservableCollection<Sentence> m_contentDataList;
     }
 }
