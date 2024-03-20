@@ -34,5 +34,18 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
             private string m_english;
             private string m_chinese;
         }
+
+        public ObservableCollection<TranslateDataModel> TranslateCollection 
+        {
+            get => m_translateCollection;
+            set
+            {
+                m_translateCollection = value;
+                OnPropertyChanged(nameof(TranslateCollection));
+            }
+        }
+
+
+        private ObservableCollection<TranslateDataModel> m_translateCollection;
     }
 }
