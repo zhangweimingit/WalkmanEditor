@@ -7,7 +7,7 @@
              xmlns:local="clr-namespace:WalkmanEditor.Views.Edit.DailyNews"
              xmlns:localvm="clr-namespace:WalkmanEditor.ViewModels.Edit.DailyNews"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+             d:DesignHeight="800" d:DesignWidth="1600"
              DataContext="{Binding Source={StaticResource Locator}, Path=DailyNewsEditPageViewModel}">
     <Grid Name="DailyNewsPanelMain">
         <Grid.RowDefinitions>
@@ -41,11 +41,11 @@
                         SelectedIndex="{Binding StepIndex, Mode=OneWay, Converter={StaticResource Enum2IntConverter}}">
                 <TabItem Header="输入英文文本"
                          IsHitTestVisible="False">
-                    <local:DailyNewsEditTextInput Width="1200" Height="800"/>
+                    <local:DailyNewsEditTextInput Width="1600" Height="800"/>
                 </TabItem>
                 <TabItem Header="生成中文翻译"
                          IsHitTestVisible="False">
-                    <local:DailyNewsTranslatePage Width="1200" Height="800"/>
+                    <local:DailyNewsTranslatePage Width="1600" Height="800"/>
                 </TabItem>
             </TabControl>
             </hc:TransitioningContentControl>
