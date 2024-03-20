@@ -11,9 +11,15 @@
         <ListView ItemsSource="{Binding DataList}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="80" Header="索引" DisplayMemberBinding="{Binding Index}"/>
-                    <GridViewColumn Width="100" Header="英文" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Width="200" Header="中文" DisplayMemberBinding="{Binding Remark}"/>
+                    <GridViewColumn Width="600" Header="英文" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Width="600" Header="中文" DisplayMemberBinding="{Binding Remark}"/>
+                    <GridViewColumn Width="200" Header="翻译">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="翻译"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
