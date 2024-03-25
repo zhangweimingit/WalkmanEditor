@@ -1,9 +1,16 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using Azure;
+using Azure.AI.Translation.Text;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using HandyControl.Controls;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace WalkmanEditor.ViewModels.Edit.DailyNews
 {
@@ -68,6 +75,28 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
         }
 
         /// <summary>
+        /// Translate english to chinese
+        /// </summary>
+        private async Task<string> TranslateAsync(string source)
+        {
+            AzureKeyCredential credential = new(Properties.Settings.Default.AzureTranslateKey);
+            TextTranslationClient client = new(credential, Properties.Settings.Default.AzureTranslateRegion);
+            try
+            {
+                Response<GetLanguagesResult> response = await client.GetLanguagesAsync(cancellationToken: CancellationToken.None).ConfigureAwait(false);
+                GetLanguagesResult languages = response.Value;
+
+                Console.WriteLine($"Number of supported languages for translate operations: {languages.Translation.Count}.");
+            }
+            catch (RequestFailedException exception)
+            {
+                Console.WriteLine($"Error Code: {exception.ErrorCode}");
+                Console.WriteLine($"Message: {exception.Message}");
+            }
+            return "";
+        }
+
+        /// <summary>
         /// Data list of the title of the news
         /// </summary>
         public ObservableCollection<Sentence> TitleDataList 
@@ -93,6 +122,21 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
             }
         }
 
+        /// <summary>
+        /// Translate text
+        /// </summary>
+        public RelayCommand<string> TranslateCmd
+        {
+            get
+            {
+                return m_translateAllCmd ??= new RelayCommand<string>(text =>
+                {
+                    Task.Run(() => TranslateAsync(text));
+                });
+            }
+        }
+
+        private RelayCommand<string> m_translateAllCmd;
         private ObservableCollection<Sentence> m_titleDataList;
         private ObservableCollection<Sentence> m_contentDataList;
     }
