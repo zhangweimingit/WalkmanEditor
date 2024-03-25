@@ -7,35 +7,71 @@
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1600"
              DataContext="{Binding Source={StaticResource Locator}, Path=DailyNewsTranslatePageViewModel}">
-    <Grid>
-        <ListView ItemsSource="{Binding ContentDataList}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Width="600" Header="英文">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding English}" 
+    <StackPanel>
+        <GroupBox Header="新闻标题" 
+                  Margin="40,20,20,20">
+            <ListView ItemsSource="{Binding TitleDataList}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Width="600" Header="英文">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding English}" 
+                                   TextWrapping="Wrap"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="600" Header="中文" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox Text="{Binding Chinese}" Width="580"
+                                 TextWrapping="Wrap"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="200" Header="翻译">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="翻译"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </GroupBox>
+
+        <GroupBox Header="新闻内容" 
+                  Margin="40,20,20,20">
+            <ListView ItemsSource="{Binding ContentDataList}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Width="600" Header="英文">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding English}" 
                                            TextWrapping="Wrap"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Width="600" Header="中文" >
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Chinese}" 
-                                           TextWrapping="Wrap"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Width="200" Header="翻译">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="翻译"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
-    </Grid>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="600" Header="中文" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox Text="{Binding Chinese}" Width="580"
+                                         TextWrapping="Wrap"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="200" Header="翻译">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="翻译"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </GroupBox>
+    </StackPanel>
 </UserControl>
