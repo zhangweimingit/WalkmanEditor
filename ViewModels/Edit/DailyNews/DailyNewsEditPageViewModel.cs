@@ -46,6 +46,8 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
             {
                 return m_nextStepCmd ??= new RelayCommand<Panel>(mainPanel =>
                 {
+                    PassDataToNextStep();
+
                     var stepBar = mainPanel.Children.OfType<StepBar>().FirstOrDefault();
                     stepBar.Next();
                 }, canExecute: p => CanNextStepCmdExecute());
@@ -66,7 +68,26 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
                 });
             }
         }
-  
+
+        /// <summary>
+        /// Pass data to next step
+        /// </summary>
+        private void PassDataToNextStep()
+        {
+            switch (StepIndex)
+            {
+                case EditStepsEnum.TextInput:
+                    {
+                        string newsTitle = ViewModelLocator.DailyNewsEditTextInputViewModel.NewsTitle;
+                        string newsContent = ViewModelLocator.DailyNewsEditTextInputViewModel.NewsContent;
+                        ViewModelLocator.DailyNewsTranslatePageViewModel.HandlePreStepData(newsTitle, newsContent);
+                        break;
+                    }
+                default:
+                    break;
+            }
+        }
+
         /// <summary>
         /// Can the next step be executed
         /// </summary>
