@@ -49,7 +49,7 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
         /// </summary>
         private void HandlePreStepTitleData(string title)
         {
-            TitleDataList = [new Sentence() { English = title, Chinese = TitleDataList?.FirstOrDefault()?.Chinese }];
+            TitleDataList = [new Sentence() { English = title, Chinese = TitleDataList?.Where(item => item.English == title).FirstOrDefault()?.Chinese }];
         }
 
         /// <summary>
