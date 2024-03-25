@@ -34,7 +34,7 @@
                                 <DataTemplate>
                                     <Button Content="翻译" 
                                             Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.TranslateCmd}"
-                                            CommandParameter="{Binding English}"/>
+                                            CommandParameter="{Binding}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -69,7 +69,7 @@
                                 <DataTemplate>
                                     <Button Content="翻译" 
                                             Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.TranslateCmd}"
-                                            CommandParameter="{Binding English}"/>
+                                            CommandParameter="{Binding}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

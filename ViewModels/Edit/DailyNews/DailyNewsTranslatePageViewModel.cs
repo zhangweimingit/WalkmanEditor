@@ -125,18 +125,19 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
         /// <summary>
         /// Translate text
         /// </summary>
-        public RelayCommand<string> TranslateCmd
+        public RelayCommand<Sentence> TranslateCmd
         {
             get
             {
-                return m_translateAllCmd ??= new RelayCommand<string>(text =>
+                return m_translateAllCmd ??= new RelayCommand<Sentence>(sentence =>
                 {
-                    Task.Run(() => TranslateAsync(text));
+                    //Task.Run(() => TranslateAsync(text));
+                    sentence.Chinese = "TT";
                 });
             }
         }
 
-        private RelayCommand<string> m_translateAllCmd;
+        private RelayCommand<Sentence> m_translateAllCmd;
         private ObservableCollection<Sentence> m_titleDataList;
         private ObservableCollection<Sentence> m_contentDataList;
     }
