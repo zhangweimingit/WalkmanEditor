@@ -75,28 +75,6 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
         }
 
         /// <summary>
-        /// Translate english to chinese
-        /// </summary>
-        private async Task<string> TranslateAsync(string source)
-        {
-            AzureKeyCredential credential = new(Properties.Settings.Default.AzureTranslateKey);
-            TextTranslationClient client = new(credential, Properties.Settings.Default.AzureTranslateRegion);
-            try
-            {
-                Response<GetLanguagesResult> response = await client.GetLanguagesAsync(cancellationToken: CancellationToken.None).ConfigureAwait(false);
-                GetLanguagesResult languages = response.Value;
-
-                Console.WriteLine($"Number of supported languages for translate operations: {languages.Translation.Count}.");
-            }
-            catch (RequestFailedException exception)
-            {
-                Console.WriteLine($"Error Code: {exception.ErrorCode}");
-                Console.WriteLine($"Message: {exception.Message}");
-            }
-            return "";
-        }
-
-        /// <summary>
         /// Data list of the title of the news
         /// </summary>
         public ObservableCollection<Sentence> TitleDataList 
@@ -129,15 +107,39 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
         {
             get
             {
-                return m_translateAllCmd ??= new RelayCommand<Sentence>(sentence =>
+                return m_translateCmd ??= new RelayCommand<Sentence>(sentence =>
                 {
-                    //Task.Run(() => TranslateAsync(text));
-                    sentence.Chinese = "TT";
+                    _ = TranslateAsync(sentence);
                 });
             }
         }
 
-        private RelayCommand<Sentence> m_translateAllCmd;
+        /// <summary>
+        /// Translate english to chinese
+        /// </summary>
+        private async Task TranslateAsync(Sentence sentence)
+        {
+            AzureKeyCredential credential = new(Properties.Settings.Default.AzureTranslateKey);
+            TextTranslationClient client = new(credential, Properties.Settings.Default.AzureTranslateRegion);
+            try
+            {
+                string targetLanguage = "zh-Hans";
+                string sourceLanguage = "en";
+                string inputText = sentence.English;
+
+                Response<IReadOnlyList<TranslatedTextItem>> response = await client.TranslateAsync(targetLanguage, inputText, sourceLanguage).ConfigureAwait(false);
+                IReadOnlyList<TranslatedTextItem> translations = response.Value;
+                TranslatedTextItem translation = translations.FirstOrDefault();
+
+                sentence.Chinese = translation?.Translations?.FirstOrDefault()?.Text;
+            }
+            catch (RequestFailedException exception)
+            {
+                HandyControl.Controls.MessageBox.Show(exception.Message, "翻译失败", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private RelayCommand<Sentence> m_translateCmd;
         private ObservableCollection<Sentence> m_titleDataList;
         private ObservableCollection<Sentence> m_contentDataList;
     }
