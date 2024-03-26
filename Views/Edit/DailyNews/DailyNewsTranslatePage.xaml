@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WalkmanEditor.Views.Edit.DailyNews"
+             xmlns:hc="https://handyorg.github.io/handycontrol"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1600"
              DataContext="{Binding Source={StaticResource Locator}, Path=DailyNewsTranslatePageViewModel}">
@@ -32,9 +33,14 @@
                         <GridViewColumn Width="80" Header="翻译">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Content="翻译" 
-                                            Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.TranslateCmd}"
-                                            CommandParameter="{Binding}"/>
+                                    <StackPanel>
+                                        <hc:LoadingCircle Width="20" Height="20" 
+                                                          Visibility="{Binding IsTranslating, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                        <Button Content="翻译" 
+                                                Visibility="{Binding IsTranslating, Converter={StaticResource BooleanToVisibilityReConverter}}"
+                                                Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.TranslateCmd}"
+                                                CommandParameter="{Binding}"/>
+                                    </StackPanel>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -67,9 +73,14 @@
                         <GridViewColumn Width="80" Header="翻译">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Content="翻译" 
-                                            Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.TranslateCmd}"
-                                            CommandParameter="{Binding}"/>
+                                    <StackPanel>
+                                        <hc:LoadingCircle Width="20" Height="20" 
+                                                          Visibility="{Binding IsTranslating, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                        <Button Content="翻译" 
+                                                Visibility="{Binding IsTranslating, Converter={StaticResource BooleanToVisibilityReConverter}}"
+                                                Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.TranslateCmd}"
+                                                CommandParameter="{Binding}"/>
+                                    </StackPanel>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
