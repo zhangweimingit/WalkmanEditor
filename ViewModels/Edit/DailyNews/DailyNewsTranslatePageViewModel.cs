@@ -38,8 +38,18 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
                 } 
             }
 
+            public bool IsTranslating
+            {
+                get => m_isTranslating;
+                set
+                {
+                    m_isTranslating = value;
+                    OnPropertyChanged(nameof(IsTranslating));
+                }
+            }
             private string m_english;
             private string m_chinese;
+            private bool   m_isTranslating;
         }
 
         /// <summary>
@@ -119,6 +129,7 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
         /// </summary>
         private async Task TranslateAsync(Sentence sentence)
         {
+            sentence.IsTranslating = true;
             AzureKeyCredential credential = new(Properties.Settings.Default.AzureTranslateKey);
             TextTranslationClient client = new(credential, Properties.Settings.Default.AzureTranslateRegion);
             try
@@ -130,13 +141,13 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
                 Response<IReadOnlyList<TranslatedTextItem>> response = await client.TranslateAsync(targetLanguage, inputText, sourceLanguage).ConfigureAwait(false);
                 IReadOnlyList<TranslatedTextItem> translations = response.Value;
                 TranslatedTextItem translation = translations.FirstOrDefault();
-
                 sentence.Chinese = translation?.Translations?.FirstOrDefault()?.Text;
             }
             catch (RequestFailedException exception)
             {
                 HandyControl.Controls.MessageBox.Show(exception.Message, "翻译失败", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            sentence.IsTranslating = false;
         }
 
         private RelayCommand<Sentence> m_translateCmd;
