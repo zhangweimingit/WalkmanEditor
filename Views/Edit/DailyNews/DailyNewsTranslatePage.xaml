@@ -9,8 +9,14 @@
              d:DesignHeight="800" d:DesignWidth="1600"
              DataContext="{Binding Source={StaticResource Locator}, Path=DailyNewsTranslatePageViewModel}">
     <StackPanel>
+        <Button Height="36" Width="160" Margin="0,10,20,0" HorizontalAlignment="Right"
+                Content="一键翻译" FontSize="20"
+                Background="{DynamicResource PrimaryBrush}" 
+                Foreground="{DynamicResource TextIconBrush}" 
+                hc:BorderElement.CornerRadius="0"
+                Command="{Binding TranslateAllCmd}"/>
         <GroupBox Header="新闻标题" 
-                  Margin="20,20,20,20">
+                  Margin="20,10,20,20">
             <ListView ItemsSource="{Binding TitleDataList}">
                 <ListView.View>
                     <GridView>

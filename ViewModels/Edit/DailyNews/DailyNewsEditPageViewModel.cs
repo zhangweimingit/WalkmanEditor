@@ -13,6 +13,7 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
         {
             PropertyChanged += HandleSubPagePropertyChanged;
             ViewModelLocator.DailyNewsEditTextInputViewModel.PropertyChanged += HandleSubPagePropertyChanged;
+            ViewModelLocator.DailyNewsTranslatePageViewModel.PropertyChanged += HandleSubPagePropertyChanged;
         }
 
         [TypeConverter(typeof(EnumDescriptionTypeConverter))]
@@ -97,6 +98,8 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
             {
                 case EditStepsEnum.TextInput: 
                     return ViewModelLocator.DailyNewsEditTextInputViewModel.IsNewsInputCompleted;
+                case EditStepsEnum.Translate:
+                    return ViewModelLocator.DailyNewsTranslatePageViewModel.IsTranslateCompleted;
                 default:
                     return false;
             }
@@ -111,6 +114,7 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
             {
                 case nameof(DailyNewsEditPageViewModel.StepIndex):
                 case nameof(DailyNewsEditTextInputViewModel.IsNewsInputCompleted):
+                case nameof(DailyNewsTranslatePageViewModel.IsTranslateCompleted):
                     {
                         NextStepCmd.NotifyCanExecuteChanged();
                         break;

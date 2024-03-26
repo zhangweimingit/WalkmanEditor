@@ -3,6 +3,7 @@ using Azure.AI.Translation.Text;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using HandyControl.Controls;
+using HandyControl.Tools.Extension;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace WalkmanEditor.ViewModels.Edit.DailyNews
@@ -94,6 +96,7 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
             {
                 m_titleDataList = value;
                 OnPropertyChanged(nameof(TitleDataList));
+                OnPropertyChanged(nameof(IsTranslateCompleted));
             }
         }
 
@@ -107,6 +110,18 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
             {
                 m_contentDataList = value;
                 OnPropertyChanged(nameof(ContentDataList));
+                OnPropertyChanged(nameof(IsTranslateCompleted));
+            }
+        }
+        /// <summary>
+        /// Indicates whether the translate step has been completed
+        /// </summary>
+        public bool IsTranslateCompleted
+        {
+            get
+            {
+                return TitleDataList.All(sentence => !sentence.Chinese.IsNullOrEmpty()) &&
+                       ContentDataList.All(sentence => !sentence.Chinese.IsNullOrEmpty());
             }
         }
 
@@ -120,6 +135,24 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
                 return m_translateCmd ??= new RelayCommand<Sentence>(sentence =>
                 {
                     _ = TranslateAsync(sentence);
+                });
+            }
+        }
+
+        /// <summary>
+        /// Translate all text
+        /// </summary>
+        public RelayCommand TranslateAllCmd
+        {
+            get
+            {
+                return m_translateAllCmd ??= new RelayCommand(() =>
+                {
+                    foreach (var sentence in ContentDataList)
+                        _ = TranslateAsync(sentence);
+  
+                    foreach (var sentence in TitleDataList)
+                        _ = TranslateAsync(sentence);
                 });
             }
         }
@@ -150,6 +183,7 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
             sentence.IsTranslating = false;
         }
 
+        private RelayCommand m_translateAllCmd;
         private RelayCommand<Sentence> m_translateCmd;
         private ObservableCollection<Sentence> m_titleDataList;
         private ObservableCollection<Sentence> m_contentDataList;
