@@ -61,7 +61,6 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
         {
             HandlePreStepTitleData(title);
             HandlePreStepContentData(content);
-            ListenSentencePropertyChanged();
         }
 
         /// <summary>
@@ -70,6 +69,7 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
         private void HandlePreStepTitleData(string title)
         {
             TitleDataList = [new Sentence() { English = title, Chinese = TitleDataList?.Where(item => item.English == title).FirstOrDefault()?.Chinese }];
+            TitleDataList.ForEach(sentence => sentence.PropertyChanged += HandleSentencePropertyChanged);
         }
 
         /// <summary>
@@ -85,17 +85,7 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
                         English = sentence,
                         Chinese = ContentDataList?.Where(item => item.English == sentence).FirstOrDefault()?.Chinese
                     }));
-        }
-        /// <summary>
-        /// Listen sentence property changed
-        /// </summary>
-        private void MountSentencePropertyChanged()
-        {
-            foreach (var item in TitleDataList)
-                item.PropertyChanged += HandleSentencePropertyChanged;
-
-            foreach (var item in ContentDataList)
-                item.PropertyChanged += HandleSentencePropertyChanged;
+            ContentDataList.ForEach(sentence => sentence.PropertyChanged += HandleSentencePropertyChanged);
         }
 
         /// <summary>
