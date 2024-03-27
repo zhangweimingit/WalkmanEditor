@@ -23,6 +23,8 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
             TextInput = 0,
             [Description("生成中文翻译")]
             Translate = 1,
+            [Description("语音合成")]
+            SpeechSynthesis = 2,
         }
 
         /// <summary>

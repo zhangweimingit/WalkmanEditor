@@ -47,6 +47,10 @@
                          IsHitTestVisible="False">
                     <local:DailyNewsTranslatePage Width="1600" Height="800"/>
                 </TabItem>
+                <TabItem Header="语音合成"
+                         IsHitTestVisible="False">
+                    <local:DailyNewsSpeechSynthesisPage Width="1600" Height="800"/>
+                </TabItem>
             </TabControl>
             </hc:TransitioningContentControl>
         </Grid>

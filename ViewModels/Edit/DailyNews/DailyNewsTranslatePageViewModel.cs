@@ -7,6 +7,7 @@ using HandyControl.Tools.Extension;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -102,33 +103,6 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
                     }
             }
         } 
-
-        /// <summary>
-        /// Listen sentence property changed
-        /// </summary>
-        private void ListenSentencePropertyChanged()
-        {
-            foreach (var item in TitleDataList)
-                item.PropertyChanged += HandleSentencePropertyChanged;
-
-            foreach (var item in ContentDataList)
-                item.PropertyChanged += HandleSentencePropertyChanged;
-        }
-
-        /// <summary>
-        /// Handle sentence property changed
-        /// </summary>
-        private void HandleSentencePropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            switch (e.PropertyName)
-            {
-                case nameof(Sentence.Chinese):
-                    {
-                        OnPropertyChanged(nameof(IsTranslateCompleted));
-                        break;
-                    }
-            }
-        }
 
         /// <summary>
         /// Data list of the title of the news
