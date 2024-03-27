@@ -61,6 +61,7 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
         {
             HandlePreStepTitleData(title);
             HandlePreStepContentData(content);
+            ListenSentencePropertyChanged();
         }
 
         /// <summary>
@@ -84,6 +85,59 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
                         English = sentence,
                         Chinese = ContentDataList?.Where(item => item.English == sentence).FirstOrDefault()?.Chinese
                     }));
+        }
+        /// <summary>
+        /// Listen sentence property changed
+        /// </summary>
+        private void MountSentencePropertyChanged()
+        {
+            foreach (var item in TitleDataList)
+                item.PropertyChanged += HandleSentencePropertyChanged;
+
+            foreach (var item in ContentDataList)
+                item.PropertyChanged += HandleSentencePropertyChanged;
+        }
+
+        /// <summary>
+        /// Handle sentence property changed
+        /// </summary>
+        private void HandleSentencePropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case nameof(Sentence.Chinese):
+                    {
+                        OnPropertyChanged(nameof(IsTranslateCompleted));
+                        break;
+                    }
+            }
+        } 
+
+        /// <summary>
+        /// Listen sentence property changed
+        /// </summary>
+        private void ListenSentencePropertyChanged()
+        {
+            foreach (var item in TitleDataList)
+                item.PropertyChanged += HandleSentencePropertyChanged;
+
+            foreach (var item in ContentDataList)
+                item.PropertyChanged += HandleSentencePropertyChanged;
+        }
+
+        /// <summary>
+        /// Handle sentence property changed
+        /// </summary>
+        private void HandleSentencePropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case nameof(Sentence.Chinese):
+                    {
+                        OnPropertyChanged(nameof(IsTranslateCompleted));
+                        break;
+                    }
+            }
         }
 
         /// <summary>
@@ -171,7 +225,7 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
                 string sourceLanguage = "en";
                 string inputText = sentence.English;
 
-                Response<IReadOnlyList<TranslatedTextItem>> response = await client.TranslateAsync(targetLanguage, inputText, sourceLanguage).ConfigureAwait(false);
+                Response<IReadOnlyList<TranslatedTextItem>> response = await client.TranslateAsync(targetLanguage, inputText, sourceLanguage).ConfigureAwait(true);
                 IReadOnlyList<TranslatedTextItem> translations = response.Value;
                 TranslatedTextItem translation = translations.FirstOrDefault();
                 sentence.Chinese = translation?.Translations?.FirstOrDefault()?.Text;
