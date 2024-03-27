@@ -31,8 +31,8 @@
                         <GridViewColumn Width="700" Header="中文" >
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBox Text="{Binding Chinese}" Width="680"
-                                             TextWrapping="Wrap"/>
+                                    <TextBox Text="{Binding Chinese, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                             Width="680" TextWrapping="Wrap"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -71,8 +71,8 @@
                         <GridViewColumn Width="700" Header="中文" >
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBox Text="{Binding Chinese}" Width="680"
-                                             TextWrapping="Wrap"/>
+                                    <TextBox Text="{Binding Chinese, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                             Width="680" TextWrapping="Wrap"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
