@@ -86,6 +86,13 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
                         ViewModelLocator.DailyNewsTranslatePageViewModel.HandlePreStepData(newsTitle, newsContent);
                         break;
                     }
+                case EditStepsEnum.Translate:
+                    {
+                        var titleTranslateSentences = ViewModelLocator.DailyNewsTranslatePageViewModel.TitleDataList.ToList();
+                        var contentTranslateSentences = ViewModelLocator.DailyNewsTranslatePageViewModel.ContentDataList.ToList();
+                        ViewModelLocator.DailyNewsSpeechSynthesisPageViewModel.HandlePreStepData(titleTranslateSentences, contentTranslateSentences);
+                        break;
+                    }
                 default:
                     break;
             }
@@ -102,6 +109,8 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
                     return ViewModelLocator.DailyNewsEditTextInputViewModel.IsNewsInputCompleted;
                 case EditStepsEnum.Translate:
                     return ViewModelLocator.DailyNewsTranslatePageViewModel.IsTranslateCompleted;
+                case EditStepsEnum.SpeechSynthesis:
+                    return ViewModelLocator.DailyNewsSpeechSynthesisPageViewModel.IsSpeechSynthesisCompleted;
                 default:
                     return false;
             }
@@ -117,6 +126,7 @@ namespace WalkmanEditor.ViewModels.Edit.DailyNews
                 case nameof(DailyNewsEditPageViewModel.StepIndex):
                 case nameof(DailyNewsEditTextInputViewModel.IsNewsInputCompleted):
                 case nameof(DailyNewsTranslatePageViewModel.IsTranslateCompleted):
+                case nameof(DailyNewsSpeechSynthesisPageViewModel.IsSpeechSynthesisCompleted):
                     {
                         NextStepCmd.NotifyCanExecuteChanged();
                         break;
